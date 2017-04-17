@@ -1,0 +1,9 @@
+﻿Build started 2017/4/17 22:14:33.
+     1>Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\wav\wav.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\wav.lastbuildstate".
+     1>Done Building Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\wav\wav.vcxproj" (clean target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.09

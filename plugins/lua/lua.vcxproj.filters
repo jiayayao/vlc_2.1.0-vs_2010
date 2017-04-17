@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="modules">
+      <UniqueIdentifier>{eb8cf949-ca00-4460-9518-09e25e35e587}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\lua">
+      <UniqueIdentifier>{9174e408-b1fe-4c05-b632-f08659d08404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\lua\lib">
+      <UniqueIdentifier>{a0eb5452-ea4f-405a-b5ed-58e00934750e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lua.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\demux.c">
+      <Filter>modules\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\extension.c">
+      <Filter>modules\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\extension_thread.c">
+      <Filter>modules\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\intf.c">
+      <Filter>modules\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\meta.c">
+      <Filter>modules\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\services_discovery.c">
+      <Filter>modules\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\vlc.c">
+      <Filter>modules\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\configuration.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\dialog.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\equalizer.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\gettext.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\httpd.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\input.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\messages.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\misc.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\net.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\objects.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\osd.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\playlist.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\sd.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\stream.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\strings.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\variables.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\video.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\vlm.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\volume.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\win.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\lua\libs\xml.c">
+      <Filter>modules\lua\lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lua.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\lua.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lua.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="lua.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

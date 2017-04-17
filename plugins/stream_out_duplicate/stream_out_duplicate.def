@@ -1,0 +1,7 @@
+; stream_out_duplicate.def : Declares the module parameters for the DLL.
+
+LIBRARY      "stream_out_duplicate"
+
+EXPORTS
+    ; Explicit exports can go here
+vlc_entry__2_1_0a

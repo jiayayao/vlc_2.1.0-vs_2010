@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{63EAD754-3AF1-4EAB-B669-87E4343D59C4}</ProjectGuid>
+    <RootNamespace>skins2</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../modules/gui/skins2;../../include;../../util;../../src;../../win32/include;../../win32/include/freetype2;../..;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;HAVE_CONFIG_H;__i386__;__PLUGIN__;MODULE_NAME=skins2;MODULE_NAME_IS_skins2;MODULE_STRING="skins2";WIN32_SKINS;HAVE_FRIBIDI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions>libvlccore.lib libcompat.lib libgcc.lib cover.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>libgdi32.lib;libole32.lib;libuuid.lib;libmingw32.lib;libfribidi.lib;libfreetype.lib;libz.lib;libmingwex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)plugins\gui\lib$(ProjectName)_plugin.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../libs;../../win32/lib;../../win32/cygwin;../../win32/cygwin/w32api;../../win32/cygwin/mingw;../../debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\skins2.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <ModuleDefinitionFile>.\skins2.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="skins2.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\skins2\commands\async_queue.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_add_item.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_audio.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_change_skin.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../modules/access/zip/unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_dvd.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_fullscreen.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_input.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_layout.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_minimize.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_muxer.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_on_top.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_playlist.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_playtree.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_quit.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_resize.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_snapshot.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\commands\cmd_vars.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_button.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_checkbox.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_generic.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_image.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_list.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_move.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_radialslider.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_resize.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_slider.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_text.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_tree.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\controls\ctrl_video.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\events\evt_input.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\events\evt_key.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\events\evt_mouse.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\events\evt_scroll.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\events\evt_special.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\parser\builder.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\parser\expr_evaluator.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\parser\interpreter.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\parser\skin_parser.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\parser\xmlparser.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\anchor.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\anim_bitmap.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\art_manager.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\bitmap_font.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\dialogs.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\file_bitmap.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\fsc_window.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\ft2_bitmap.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\ft2_err.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\skins2\src\ft2_font.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\generic_bitmap.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\generic_layout.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\generic_window.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\ini_file.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\logger.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\os_factory.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\popup.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\scaled_bitmap.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\skin_main.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../modules/access/zip/unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\skins2\src\theme.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\theme_loader.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../modules/access/zip/unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\skins2\src\theme_repository.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\tooltip.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\top_window.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\var_manager.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\vlcproc.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\vout_manager.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\vout_window.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\src\window_manager.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\bezier.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\fsm.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\position.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\ustring.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\var_bool.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\var_list.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\var_percent.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\var_string.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\var_text.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\utils\var_tree.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\vars\equalizer.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\vars\playtree.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\vars\time.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\vars\volume.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_dragdrop.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_factory.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_graphics.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_loop.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_popup.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_timer.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_tooltip.cpp" />
+    <ClCompile Include="..\..\modules\gui\skins2\win32\win32_window.cpp" />
+    <ClCompile Include="..\..\modules\access\zip\unzip\ioapi.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\access\zip\unzip\unzip.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="skins2.def" />
+    <None Include="res\skins2.rc2" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="skins2.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="skins2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\libcompat\libcompat.vcxproj">
+      <Project>{84c73a86-d0d7-4749-9584-ffcb67886182}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\libvlccore\libvlccore.vcxproj">
+      <Project>{258ae776-e8a3-4de9-8dad-adfc77182277}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,7 @@
+; packetizer_mpeg4video.def : Declares the module parameters for the DLL.
+
+LIBRARY      "packetizer_mpeg4video"
+
+EXPORTS
+    ; Explicit exports can go here
+vlc_entry__2_1_0a

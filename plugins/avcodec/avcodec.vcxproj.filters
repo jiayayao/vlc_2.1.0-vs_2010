@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="modules">
+      <UniqueIdentifier>{7aeb53ed-ca0f-4db8-bb12-2e584d3b6654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\codec">
+      <UniqueIdentifier>{38317ca4-bbad-4c9f-9221-8aab6c05befa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\codec\avcodec">
+      <UniqueIdentifier>{e74015a7-b201-4bdd-b123-4b83dc7eb2f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\demux">
+      <UniqueIdentifier>{a916b57f-4880-4f75-966f-eb67789d805e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\demux\avformat">
+      <UniqueIdentifier>{58b4a47f-e116-48b3-93cb-85fa027e9f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\access">
+      <UniqueIdentifier>{743ec40b-a474-4524-9664-51b51b662668}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="avcodec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\audio.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\avcodec.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\chroma.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\cpu.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\encoder.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\fourcc.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\subtitle.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\codec\avcodec\video.c">
+      <Filter>modules\codec\avcodec</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\demux\avformat\demux.c">
+      <Filter>modules\demux\avformat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\demux\avformat\mux.c">
+      <Filter>modules\demux\avformat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\access\avio.c">
+      <Filter>modules\access</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="avcodec.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\avcodec.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="avcodec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="avcodec.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="modules">
+      <UniqueIdentifier>{77b09536-aaa9-4eb6-9581-6c0c3cd9a65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\video_output">
+      <UniqueIdentifier>{49c54aed-4da8-436e-807a-55f578f48bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\video_output\msw">
+      <UniqueIdentifier>{b6ad40b2-6338-4757-881f-27214961afaf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="glwin32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\video_output\opengl.c">
+      <Filter>modules\video_output</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\video_output\msw\common.c">
+      <Filter>modules\video_output\msw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\video_output\msw\events.c">
+      <Filter>modules\video_output\msw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\video_output\msw\glwin32.c">
+      <Filter>modules\video_output\msw</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glwin32.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\glwin32.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="glwin32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="glwin32.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

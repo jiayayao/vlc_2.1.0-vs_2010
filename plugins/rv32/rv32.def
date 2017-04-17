@@ -1,0 +1,7 @@
+; rv32.def : Declares the module parameters for the DLL.
+
+LIBRARY      "rv32"
+
+EXPORTS
+    ; Explicit exports can go here
+vlc_entry__2_1_0a

@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{669ABBF1-D0EA-4325-9B30-C2918EF0A7D9}</ProjectGuid>
+    <RootNamespace>qt4</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Program Files\Microsoft SDKs\Windows\v7.0\Include;C:\Program Files\Microsoft DirectX SDK (June 2010)\Include;../../include;../../util;../../src;../../win32/include;../..;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;HAVE_CONFIG_H;__i386__;__PLUGIN__;MODULE_NAME=qt4;MODULE_NAME_IS_qt4;MODULE_STRING="qt4";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalOptions>libvlccore.lib libcompat.lib cover.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>QtCored4.lib;QtGuid4.lib;libwinmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)plugins\gui\lib$(ProjectName)_plugin.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../libs;../../win32/cygwin/w32api;../../debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\qt4.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <ModuleDefinitionFile>.\qt4.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="qt4.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\actions_manager.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\actions_manager.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs_provider.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs_provider.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\extensions_manager.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\extensions_manager.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\input_manager.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\input_manager.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\main_interface.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\main_interface.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\main_interface_win32.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\menus.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\menus.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\qt4.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\recents.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\recents.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\resources.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\complete_preferences.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\complete_preferences.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\controller.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\controller.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\controller_widget.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\controller_widget.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\extended_panels.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\extended_panels.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\info_panels.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\info_panels.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\info_widgets.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\info_widgets.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\interface_widgets.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\interface_widgets.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\open_panels.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\open_panels.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\preferences_widgets.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\preferences_widgets.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\simple_preferences.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\simple_preferences.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\sout\profile_selector.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\sout\profile_selector.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\sout\sout_widgets.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\sout\sout_widgets.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\ml_item.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\ml_model.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\ml_model.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\playlist.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\playlist.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\playlist_item.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\playlist_model.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\playlist_model.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\selector.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\selector.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\standardpanel.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\standardpanel.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\views.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\views.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\vlc_model.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\playlist\vlc_model.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGChannels.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGChannels.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGItem.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGRuler.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGRuler.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGView.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGView.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGWidget.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\components\epg\EPGWidget.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\bookmarks.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\bookmarks.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\convert.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\convert.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\epg.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\epg.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\errors.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\errors.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\extended.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\extended.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\extensions.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\extensions.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\external.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\external.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\fingerprintdialog.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\fingerprintdialog.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\firstrun.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\firstrun.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\gototime.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\gototime.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\help.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\help.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\mediainfo.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\mediainfo.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\messages.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\messages.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\ml_configuration.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\ml_configuration.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\open.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\open.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\openurl.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\openurl.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\playlist.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)2.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)2.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)2.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)2.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\playlist.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\plugins.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\plugins.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\podcast_configuration.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\podcast_configuration.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\preferences.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\preferences.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\sout.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\sout.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\toolbar.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\toolbar.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\vlm.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\dialogs\vlm.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\customwidgets.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\customwidgets.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\input_slider.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\input_slider.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\pictureflow.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\pictureflow.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\qmenuview.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\qmenuview.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\qt_dirs.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\qvlcapp.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\registry.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\searchlineedit.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\searchlineedit.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\timetooltip.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\timetooltip.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\buttons\BrowseButton.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\buttons\BrowseButton.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\buttons\DeckButtonsLayout.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\buttons\DeckButtonsLayout.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\buttons\RoundButton.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\util\buttons\RoundButton.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\adapters\chromaprint.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\adapters\chromaprint.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\adapters\seekpoints.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\adapters\seekpoints.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\adapters\variables.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)2.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)2.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)2.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)2.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\adapters\variables.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\styles\seekstyle.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\modules\gui\qt4\styles\seekstyle.moc.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../win32/include/qt4/include;../../win32/include/qt4/include/QtCore;../../win32/include/qt4/include/QtGui;../../modules/gui/qt4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="qt4.def" />
+    <None Include="res\qt4.rc2" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="qt4.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="qt4.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\libcompat\libcompat.vcxproj">
+      <Project>{84c73a86-d0d7-4749-9584-ffcb67886182}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\libvlccore\libvlccore.vcxproj">
+      <Project>{258ae776-e8a3-4de9-8dad-adfc77182277}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

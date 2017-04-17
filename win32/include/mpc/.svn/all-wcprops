@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/474/libmpc/trunk/include/mpc
+END
+mpcmath.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/448/libmpc/trunk/include/mpc/mpcmath.h
+END
+mpcdec.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/431/libmpc/trunk/include/mpc/mpcdec.h
+END
+datatypes.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/294/libmpc/trunk/include/mpc/datatypes.h
+END
+minimax.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/294/libmpc/trunk/include/mpc/minimax.h
+END
+reader.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/431/libmpc/trunk/include/mpc/reader.h
+END
+mpc_types.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/474/libmpc/trunk/include/mpc/mpc_types.h
+END
+streaminfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/431/libmpc/trunk/include/mpc/streaminfo.h
+END

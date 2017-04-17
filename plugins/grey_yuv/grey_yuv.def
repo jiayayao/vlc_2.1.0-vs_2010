@@ -1,0 +1,7 @@
+; grey_yuv.def : Declares the module parameters for the DLL.
+
+LIBRARY      "grey_yuv"
+
+EXPORTS
+    ; Explicit exports can go here
+vlc_entry__2_1_0a

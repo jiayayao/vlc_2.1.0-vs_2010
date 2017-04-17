@@ -1,0 +1,7 @@
+; scte27.def : Declares the module parameters for the DLL.
+
+LIBRARY      "scte27"
+
+EXPORTS
+    ; Explicit exports can go here
+vlc_entry__2_1_0a

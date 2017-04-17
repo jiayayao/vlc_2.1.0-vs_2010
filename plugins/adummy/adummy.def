@@ -1,0 +1,7 @@
+; adummy.def : Declares the module parameters for the DLL.
+
+LIBRARY      "adummy"
+
+EXPORTS
+    ; Explicit exports can go here
+vlc_entry__2_1_0a

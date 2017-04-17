@@ -1,0 +1,7 @@
+; simple_channel_mixer.def : Declares the module parameters for the DLL.
+
+LIBRARY      "simple_channel_mixer"
+
+EXPORTS
+    ; Explicit exports can go here
+vlc_entry__2_1_0a
