@@ -914,7 +914,7 @@ static void *DecoderThread( void *p_data )
     /* The decoder's main loop */
     for( ;; )
     {
-        block_t *p_block = block_FifoGet( p_owner->p_fifo );
+        block_t *p_block = block_FifoGet( p_owner->p_fifo );// 会调用vlc_testcancel()，如果停止解码，会在此函数中退出线程
 
         /* Make sure there is no cancellation point other than this one^^.
          * If you need one, be sure to push cleanup of p_block. */
