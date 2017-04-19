@@ -1,0 +1,7 @@
+vlcwin->libvlc_new->libvlc_add_intf
+
+½âÂëÏß³Ì£º
+src\video_output\video_output.c
+vlc_entry->Thread->ThreadManage->ThreadDisplayPicture->ThreadDisplayPreparePicture
+
+vlc\src\input\decoder.c

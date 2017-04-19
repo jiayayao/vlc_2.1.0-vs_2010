@@ -1,0 +1,889 @@
+V/VLC/PlaybackService: Loading position 0 in [org.videolan.medialibrary.media.MediaWrapper@2fa087e4]
+D/VLC: [b48cf028/5d6] core input: Creating an input for 'rtsp://10.3.20.185/onvif-media/media.amp'
+D/VLC: [b48cf028/5f5] core input: using timeshift granularity of 50 MiB
+D/VLC: [b48cf028/5f5] core input: using default timeshift path
+D/VLC: [b48cf028/5f5] core input: `rtsp://admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast' gives access `rtsp' demux `any' path `admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast'
+D/VLC: [a095a588/5f5] core input source: creating demux: access='rtsp' demux='any' location='admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast' file='(null)'
+D/VLC: [a0829228/5f5] core demux: looking for access_demux module matching "rtsp": 6 candidates
+D/VLC: [a0829228/5f5] live555 demux: version 2016.11.28
+W/VLC: [a0829228/5f5] core demux: Password in a URI is DEPRECATED
+E/VLC-std: Opening connection to 10.3.20.185, port 554...
+E/VLC-std: ...remote connection opened
+           Sending request: OPTIONS rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 2
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+I/VLC/BitmapCache: LRUCache size set to 107374182
+I/VLC/PlaybackService: Media.Event.MetaChanged: 12
+I/VLC/PlaybackService: Media.Event.MetaChanged: 12
+E/VLC-std: Received 143 new bytes of response data.
+E/VLC-std: Received a complete OPTIONS response:
+           RTSP/1.0 200 OK
+           CSeq: 2
+           Public: DESCRIBE, GET_PARAMETER, PAUSE, PLAY, SETUP, SET_PARAMETER, TEARDOWN
+           Date: Wed, 19 Apr 2017 07:21:53 GMT
+E/VLC-std: Sending request: DESCRIBE rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 3
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Accept: application/sdp
+E/VLC-std: Received 199 new bytes of response data.
+E/VLC-std: Received a complete DESCRIBE response:
+           RTSP/1.0 401 Unauthorized
+           CSeq: 3
+           WWW-Authenticate: Digest realm="AXIS_WS_ACCC8E41A320", nonce="00058c7aY52967318f73844d686966f513cfdc97f2b1db", stale=FALSE
+           Date: Wed, 19 Apr 2017 07:21:53 GMT
+E/VLC-std: Resending...
+E/VLC-std: Sending request: DESCRIBE rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 4
+           Authorization: Digest username="admin", realm="AXIS_WS_ACCC8E41A320", nonce="00058c7aY52967318f73844d686966f513cfdc97f2b1db", uri="rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast", response="79c25155ce602bdda837ece72c5f5508"
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Accept: application/sdp
+E/VLC-std: Received 856 new bytes of response data.
+E/VLC-std: Received a complete DESCRIBE response:
+           RTSP/1.0 200 OK
+           CSeq: 4
+           Content-Type: application/sdp
+           Content-Base: rtsp://10.3.20.185:554/onvif-media/media.amp/
+           Date: Wed, 19 Apr 2017 07:21:55 GMT
+           Content-Length: 678
+
+           v=0
+           o=- 1492586515743424 1492586515743424 IN IP4 10.3.20.185
+           s=Media Presentation
+           e=NONE
+           b=AS:50000
+           t=0 0
+           a=control:rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast
+           a=range:npt=0.000000-
+           m=video 0 RTP/AVP 96
+           c=IN IP4 0.0.0.0
+           b=AS:50000
+           a=framerate:30.0
+           a=transform:1.000000,0.000000,0.000000;0.000000,0.995192,0.000000;0.000000,0.000000,1.000000
+           a=control:rtsp://10.3.20.185:554/onvif-media/media.amp/trackID=1?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast
+           a=rtpmap:96 H264/90000
+           a=fmtp:96 packetization-mode=1; profile-level-id=4D4029; sprop-parameter-sets=Z01AKZpmA8ARPy4C1AQEBBen,aO48gA==
+D/VLC: [a0829228/5f5] live555 demux: RTP subsession 'video/H264'
+E/VLC-std: Sending request: SETUP rtsp://10.3.20.185:554/onvif-media/media.amp/trackID=1?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 5
+           Authorization: Digest username="admin", realm="AXIS_WS_ACCC8E41A320", nonce="00058c7aY52967318f73844d686966f513cfdc97f2b1db", uri="rtsp://10.3.20.185:554/onvif-media/media.amp/", response="0f81c42f0f6f9b380e429a0b5adef2ef"
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Transport: RTP/AVP;unicast;client_port=54584-54585
+D/VLC: [b48cf028/5f5] core input: selecting program id=0
+D/VLC: [a0829228/5f5] live555 demux: setup start: 0.000000 stop:0.000000
+E/VLC-std: Received 198 new bytes of response data.
+           Received a complete SETUP response:
+           RTSP/1.0 200 OK
+           CSeq: 5
+           Session: CF14A038; timeout=60
+           Transport: RTP/AVP;unicast;client_port=54584-54585;server_port=50092-50093;ssrc=534B2131;mode="PLAY"
+           Date: Wed, 19 Apr 2017 07:21:56 GMT
+
+
+           Sending request: PLAY rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 6
+           Authorization: Digest username="admin", realm="AXIS_WS_ACCC8E41A320", nonce="00058c7aY52967318f73844d686966f513cfdc97f2b1db", uri="rtsp://10.3.20.185:554/onvif-media/media.amp/", response="96a7a81455dad1a9d73958699cbd69a0"
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Session: CF14A038
+           Range: npt=0.000-
+D/VLC/VideoPlayerActivity: MediaRouter information : android.media.MediaRouter@1a0d4467
+I/VLC/VideoPlayerActivity: No secondary display detected
+W/MediaRouter: removeCallback(org.videolan.vlc.gui.video.VideoPlayerActivity$1@d47b986): callback not registered
+D/VLC/VideoPlayerActivity: Continuing playback from PlaybackService at index 0
+E/VLC-std: Received 256 new bytes of response data.
+E/VLC-std: Received a complete PLAY response:
+           RTSP/1.0 200 OK
+           CSeq: 6
+           Session: CF14A038
+           Range: npt=0-
+           RTP-Info: url=rtsp://10.3.20.185:554/onvif-media/media.amp/trackID=1?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast;seq=30405;rtptime=29935497
+           Date: Wed, 19 Apr 2017 07:21:57 GMT
+D/VLC: [a0829228/5f5] live555 demux: We have a timeout of 60 seconds
+D/VLC: [a0829228/5f5] live555 demux: play start: 0.000000 stop:0.000000
+D/VLC: [a0829228/5f5] core demux: using access_demux module "live555"
+D/VLC: [a0a54228/5f5] core packetizer: looking for packetizer module matching "any": 24 candidates
+D/VLC: [a0a54228/5f5] h264 packetizer: found NAL_SPS (sps_id=0)
+D/VLC: [a0a54228/5f5] h264 packetizer: found NAL_PPS (pps_id=0 sps_id=0)
+D/VLC: [a0a54228/5f5] core packetizer: using packetizer module "h264"
+D/VLC: [a0a53ea8/5f5] core decoder: looking for decoder module matching "mediacodec_ndk,all": 41 candidates
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported mime video/x-ms-wmv
+W/VideoCapabilities: Unrecognized level 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 128 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 256 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 512 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 1024 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 2048 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 4096 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 128 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 256 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 512 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 1024 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 2048 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 4096 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 2 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 128 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 256 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 512 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 1024 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 2048 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 4096 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 4 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 128 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 256 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 512 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 1024 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 2048 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 4096 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 8 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 128 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 256 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 512 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 1024 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 2048 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 4096 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 128 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 256 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 512 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 1024 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 2048 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 4096 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 16 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 32 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 128 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 256 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 512 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 1024 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 2048 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized level 4096 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unrecognized profile 64 for video/x-vnd.on2.vp8
+W/VideoCapabilities: Unsupported mime video/mjpeg
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 4 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 8 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 16 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 32 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/VideoCapabilities: Unrecognized profile 64 for video/hevc
+W/AudioCapabilities: Unsupported mime audio/pcm32le
+W/AudioCapabilities: Unsupported mime audio/pcm32be
+W/AudioCapabilities: Unsupported mime audio/pcmf32le
+W/AudioCapabilities: Unsupported mime audio/pcmf32be
+W/AudioCapabilities: Unsupported mime audio/ffmpeg
+W/VideoCapabilities: Unsupported mime video/ffmpeg
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+I/VideoCapabilities: Unsupported profile 4 for video/mp4v-es
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+D/VLC: [a0a53ea8/5f5] mediacodec decoder: Number of profile levels: 91
+D/VLC: [a0a53ea8/5f5] mediacodec decoder: using OMX.ZX.video.decoder.avc
+E/VLC: [a0a53ea8/5f5] mediacodec decoder: Opaque Vout request failed
+D/VLC: [a0a53ea8/5f5] mediacodec decoder: MediaCodec via NDK closed
+D/VLC: [a0a53ea8/5f5] avcodec decoder: CPU flags: 0x0000003f
+D/VLC: [a0a53ea8/5f5] avcodec decoder: allowing 4 thread(s) for decoding
+D/VLC: [a0a53ea8/5f5] avcodec decoder: codec (h264) started
+D/VLC: [a0a53ea8/5f5] avcodec decoder: using frame thread mode with 4 threads
+D/VLC: [a0a53ea8/5f5] core decoder: using decoder module "avcodec"
+D/VLC: [a09440d8/5f5] core demux meta: looking for meta reader module matching "any": 2 candidates
+D/VLC: [a09440d8/5f5] lua demux meta: Trying Lua scripts in /data/data/org.videolan.vlc.debug/app_vlc/.share/lua/meta/reader
+D/VLC: [a09440d8/5f5] lua demux meta: Trying Lua playlist script /data/data/org.videolan.vlc.debug/app_vlc/.share/lua/meta/reader/filename.lua
+D/VLC: [a09440d8/5f5] lua demux meta: Trying Lua scripts in /data/app/org.videolan.vlc.debug-1/lib/arm/vlc/lua/meta/reader
+D/VLC: [a09440d8/5f5] lua demux meta: Trying Lua scripts in /data/app/org.videolan.vlc.debug-1/share/vlc/lua/meta/reader
+D/VLC: [a09440d8/5f5] core demux meta: no meta reader modules matched
+D/VLC: [b48cf028/5f5] core input: `rtsp://admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast' successfully opened
+D/VLC: [a0a53ea8/5f5] core decoder: killing decoder fourcc `h264', 0 PES in FIFO
+D/VLC: [a0a53ea8/5f5] core decoder: removing module "avcodec"
+D/VLC: [a0a53ea8/5f5] avcodec decoder: ffmpeg codec (h264) stopped
+D/VLC: [a0a54228/5f5] core packetizer: removing module "h264"
+D/VLC: [a0829228/5f5] core demux: removing module "live555"
+E/VLC-std: Sending request: TEARDOWN rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 7
+           Authorization: Digest username="admin", realm="AXIS_WS_ACCC8E41A320", nonce="00058c7aY52967318f73844d686966f513cfdc97f2b1db", uri="rtsp://10.3.20.185:554/onvif-media/media.amp/", response="3f572214c8275e5a1986884570c0c60e"
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Session: CF14A038
+D/VLC: [b48cf028/5f5] core input: Program doesn't contain anymore ES
+W/art: Native thread exiting without having called DetachCurrentThread (maybe it's going to use a pthread_key_create destructor?): Thread[20,tid=1525,Native,Thread*=0xa08ec400,peer=0x12f250a0,"VlcObject"]
+D/VLC: [b48cf028/5d6] core input: Destroying the input for 'rtsp://10.3.20.185/onvif-media/media.amp'
+D/VLC: [b48cf028/5d6] core input: Creating an input for 'rtsp://10.3.20.185/onvif-media/media.amp'
+D/VLC: [b48cf028/5fd] core input: using timeshift granularity of 50 MiB
+D/VLC: [b48cf028/5fd] core input: using default timeshift path
+D/VLC: [b48cf028/5fd] core input: `rtsp://admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast' gives access `rtsp' demux `any' path `admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast'
+D/VLC: [9fbf3408/5fd] core input source: creating demux: access='rtsp' demux='any' location='admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast' file='(null)'
+D/VLC: [9f133fa8/5fd] core demux: looking for access_demux module matching "rtsp": 6 candidates
+D/VLC: [9f133fa8/5fd] live555 demux: version 2016.11.28
+W/VLC: [9f133fa8/5fd] core demux: Password in a URI is DEPRECATED
+E/VLC-std: Opening connection to 10.3.20.185, port 554...
+I/Choreographer: Skipped 39 frames!  The application may be doing too much work on its main thread.
+E/VLC-std: ...remote connection opened
+           Sending request: OPTIONS rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 2
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+I/VLC/PlaybackService: Media.Event.MetaChanged: 12
+I/VLC/PlaybackService: Media.Event.MetaChanged: 12
+E/VLC-std: Received 143
+E/VLC-std:  new bytes of response data.
+           Received a complete 
+E/VLC-std: OPTIONS response:
+           RTSP/1.0 200 OK
+           CSeq: 2
+           Public: DESCRIBE, GET_PARAMETER, PAUSE, PLAY, SETUP, SET_PARAMETER, TEARDOWN
+           Date: Wed, 19 Apr 2017 07:21:58 GMT
+E/VLC-std: Sending request: DESCRIBE rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 3
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Accept: application/sdp
+E/VLC-std: Received 199
+E/VLC-std:  new bytes of response data.
+           Received a complete DESCRIBE response:
+           RTSP/1.0 401 Unauthorized
+           CSeq: 3
+           WWW-Authenticate: Digest realm="AXIS_WS_ACCC8E41A320", nonce="00058c7fY1079743c95ba8c0382890365c684cc5830032", stale=FALSE
+           Date: Wed, 19 Apr 2017 07:21:58 GMT
+E/VLC-std: Resending...
+E/VLC-std: Sending request: DESCRIBE rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 4
+           Authorization: Digest username="admin", realm="AXIS_WS_ACCC8E41A320", nonce="00058c7fY1079743c95ba8c0382890365c684cc5830032", uri="rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast", response="baec338c2bce019030f7514fe2b0f855"
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Accept: application/sdp
+E/VLC-std: Received 856 new bytes of response data.
+E/VLC-std: Received a complete DESCRIBE response:
+           RTSP/1.0 200 OK
+           CSeq: 4
+           Content-Type: application/sdp
+           Content-Base: rtsp://10.3.20.185:554/onvif-media/media.amp/
+           Date: Wed, 19 Apr 2017 07:22:00 GMT
+           Content-Length: 678
+
+           v=0
+           o=- 1492586520714993 1492586520714993 IN IP4 10.3.20.185
+           s=Media Presentation
+           e=NONE
+           b=AS:50000
+           t=0 0
+           a=control:rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast
+           a=range:npt=0.000000-
+           m=video 0 RTP/AVP 96
+           c=IN IP4 0.0.0.0
+           b=AS:50000
+           a=framerate:30.0
+           a=transform:1.000000,0.000000,0.000000;0.000000,0.995192,0.000000;0.000000,0.000000,1.000000
+           a=control:rtsp://10.3.20.185:554/onvif-media/media.amp/trackID=1?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast
+           a=rtpmap:96 H264/90000
+           a=fmtp:96 packetization-mode=1; profile-level-id=4D4029; sprop-parameter-sets=Z01AKZpmA8ARPy4C1AQEBBen,aO48gA==
+D/VLC: [9f133fa8/5fd] live555 demux: RTP subsession 'video/H264'
+E/VLC-std: Sending request: SETUP rtsp://10.3.20.185:554/onvif-media/media.amp/trackID=1?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 5
+           Authorization: Digest username="admin", realm="AXIS_WS_ACCC8E41A320", nonce="00058c7fY1079743c95ba8c0382890365c684cc5830032", uri="rtsp://10.3.20.185:554/onvif-media/media.amp/", response="a1796d06e1a633f768d9b03288ce6ff3"
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Transport: RTP/AVP;unicast;client_port=49506-49507
+E/VLC-std: Received 198
+E/VLC-std:  new bytes of response data.
+           Received a complete SETUP response:
+           RTSP/1.0 200 OK
+           CSeq: 5
+           Session: B57E3174; timeout=60
+           Transport: RTP/AVP;unicast;client_port=49506-49507;server_port=50094-50095;ssrc=8A2E2C22;mode="PLAY"
+           Date: Wed, 19 Apr 2017 07:22:02 GMT
+D/VLC: [b48cf028/5fd] core input: selecting program id=0
+D/VLC: [9f133fa8/5fd] live555 demux: setup start: 0.000000 stop:0.000000
+E/VLC-std: Sending request: PLAY rtsp://10.3.20.185:554/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast RTSP/1.0
+           CSeq: 6
+           Authorization: Digest username="admin", realm="AXIS_WS_ACCC8E41A320", nonce="00058c7fY1079743c95ba8c0382890365c684cc5830032", uri="rtsp://10.3.20.185:554/onvif-media/media.amp/", response="11c62815f0400290412dcb474ae6f9d8"
+           User-Agent: LibVLC/3.0.0-git (LIVE555 Streaming Media v2016.11.28)
+           Session: B57E3174
+           Range: npt=0.000-
+D/VLC: [9f133fa8/5fd] live555 demux: We have a timeout of 60 seconds
+D/VLC: [9f133fa8/5fd] live555 demux: play start: 0.000000 stop:0.000000
+D/VLC: [9f133fa8/5fd] core demux: using access_demux module "live555"
+E/VLC-std: Received 258 new bytes of response data.
+           Received a complete PLAY response:
+           RTSP/1.0 200 OK
+           CSeq: 6
+           Session: B57E3174
+           Range: npt=0-
+           RTP-Info: url=rtsp://10.3.20.185:554/onvif-media/media.amp/trackID=1?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast;seq=19570;rtptime=3164098806
+           Date: Wed, 19 Apr 2017 07:22:04 GMT
+D/VLC: [aed61b28/5fd] core packetizer: looking for packetizer module matching "any": 24 candidates
+D/VLC: [aed61b28/5fd] h264 packetizer: found NAL_SPS (sps_id=0)
+D/VLC: [aed61b28/5fd] h264 packetizer: found NAL_PPS (pps_id=0 sps_id=0)
+D/VLC: [aed61b28/5fd] core packetizer: using packetizer module "h264"
+D/VLC: [aed617a8/5fd] core decoder: looking for decoder module matching "mediacodec_ndk,all": 41 candidates
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+D/VLC: [aed617a8/5fd] mediacodec decoder: Number of profile levels: 91
+D/VLC: [aed617a8/5fd] mediacodec decoder: using OMX.ZX.video.decoder.avc
+E/VLC: [aed617a8/5fd] mediacodec decoder: Opaque Vout request failed
+D/VLC: [aed617a8/5fd] mediacodec decoder: MediaCodec via NDK closed
+D/VLC: [aed617a8/5fd] avcodec decoder: CPU flags: 0x0000003f
+D/VLC: [aed617a8/5fd] avcodec decoder: allowing 4 thread(s) for decoding
+D/VLC: [aed617a8/5fd] avcodec decoder: codec (h264) started
+D/VLC: [aed617a8/5fd] avcodec decoder: using frame thread mode with 4 threads
+D/VLC: [aed617a8/5fd] core decoder: using decoder module "avcodec"
+D/VLC: [9f091df8/5fd] core demux meta: looking for meta reader module matching "any": 2 candidates
+D/VLC: [9f091df8/5fd] lua demux meta: Trying Lua scripts in /data/data/org.videolan.vlc.debug/app_vlc/.share/lua/meta/reader
+D/VLC: [9f091df8/5fd] lua demux meta: Trying Lua playlist script /data/data/org.videolan.vlc.debug/app_vlc/.share/lua/meta/reader/filename.lua
+D/VLC: [9f091df8/5fd] lua demux meta: Trying Lua scripts in /data/app/org.videolan.vlc.debug-1/lib/arm/vlc/lua/meta/reader
+D/VLC: [9f091df8/5fd] lua demux meta: Trying Lua scripts in /data/app/org.videolan.vlc.debug-1/share/vlc/lua/meta/reader
+D/VLC: [9f091df8/5fd] core demux meta: no meta reader modules matched
+D/VLC: [b48cf028/5fd] core input: `rtsp://admin:admin@10.3.20.185/onvif-media/media.amp?profile=profile_1_h264&sessiontimeout=60&streamtype=unicast' successfully opened
+I/VLC/PlaybackService: Media.Event.ParsedChanged
+I/VLC/PlaybackService: MediaPlayer.Event.Playing
+D/VLC: [b48cf028/5fd] core input: Buffering 0%
+D/VLC: [b48cf028/5fd] core input: control type=1
+D/VLC: [b48cf028/5fd] core input: control type=24
+D/VLC: [b48cf028/5fd] core input: control type=24
+D/VLC: [aed617a8/604] core decoder: restarting module due to input format change
+D/VLC: [aed617a8/604] core decoder: removing module "avcodec"
+D/VLC: [aed617a8/604] avcodec decoder: ffmpeg codec (h264) stopped
+D/VLC: [aed617a8/604] core decoder: looking for decoder module matching "mediacodec_ndk,all": 41 candidates
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 4 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 32 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+W/VideoCapabilities: Unsupported profile 64 for video/avc
+D/VLC: [aed617a8/604] mediacodec decoder: Number of profile levels: 91
+D/VLC: [aed617a8/604] mediacodec decoder: using OMX.ZX.video.decoder.avc
+W/VLC: [aed617a8/604] core decoder: Fixing broken HDTV stream (display_height=1088)
+D/VLC: [aed64c28/604] core spu text: looking for text renderer module matching "any": 1 candidates
+D/VLC: [a0a4e908/604] core stream: creating access: file:///system/etc/system_fonts.xml
+D/VLC: [a0a4e908/604] core stream:  (path: /system/etc/system_fonts.xml)
+D/VLC: [a0a4e908/604] core stream: looking for access module matching "file": 20 candidates
+D/VLC: [a0a4e908/604] core stream: using access module "filesystem"
+D/VLC: [a09ae6c8/604] core stream: looking for stream_filter module matching "prefetch,cache_read": 10 candidates
+D/VLC: [a09ae6c8/604] cache_read stream: Using stream method for AStream*
+D/VLC: [a09ae6c8/604] cache_read stream: starting pre-buffering
+D/VLC: [a09ae6c8/604] cache_read stream: received first data after 0 ms
+D/VLC: [a09ae6c8/604] cache_read stream: pre-buffering done 1024 bytes in 0s - 9615 KiB/s
+D/VLC: [a09ae6c8/604] core stream: using stream_filter module "cache_read"
+D/VLC: [9f137068/604] core xml reader: looking for xml reader module matching "any": 1 candidates
+D/VLC: [9f137068/604] core xml reader: using xml reader module "xml"
+D/VLC: [a09ae6c8/604] core stream: removing module "cache_read"
+D/VLC: [a0a4e908/604] core stream: removing module "filesystem"
+D/VLC: [a0a4e868/604] core stream: creating access: file:///system/etc/fallback_fonts.xml
+D/VLC: [a0a4e868/604] core stream:  (path: /system/etc/fallback_fonts.xml)
+D/VLC: [a0a4e868/604] core stream: looking for access module matching "file": 20 candidates
+D/VLC: [a0a4e868/604] core stream: using access module "filesystem"
+D/VLC: [a0a4e908/604] core stream: looking for stream_filter module matching "prefetch,cache_read": 10 candidates
+D/VLC: [a0a4e908/604] cache_read stream: Using stream method for AStream*
+D/VLC: [a0a4e908/604] cache_read stream: starting pre-buffering
+D/VLC: [a0a4e908/604] cache_read stream: received first data after 0 ms
+D/VLC: [a0a4e908/604] cache_read stream: pre-buffering done 1024 bytes in 0s - 9900 KiB/s
+D/VLC: [a0a4e908/604] core stream: using stream_filter module "cache_read"
+D/VLC: [9f137068/604] core xml reader: looking for xml reader module matching "any": 1 candidates
+D/VLC: [9f137068/604] core xml reader: using xml reader module "xml"
+D/VLC: [a0a4e908/604] core stream: removing module "cache_read"
+D/VLC: [a0a4e868/604] core stream: removing module "filesystem"
+D/VLC: [a09ae6c8/604] core stream: creating access: file:///vendor/etc/fallback_fonts.xml
+D/VLC: [a09ae6c8/604] core stream:  (path: /vendor/etc/fallback_fonts.xml)
+D/VLC: [a09ae6c8/604] core stream: looking for access module matching "file": 20 candidates
+E/VLC: [a09ae6c8/604] filesystem stream: cannot open file /vendor/etc/fallback_fonts.xml (No such file or directory)
+D/VLC: [a09ae6c8/604] core stream: no access modules matched
+W/VLC/VLCApplication: ErrorMessage VLC could not open the file "/vendor/etc/fallback_fonts.xml" (No such file or directory).
+E/VLC: [aed64c28/604] core spu text: no suitable access module for `file:///vendor/etc/fallback_fonts.xml'
+D/VLC: [aed64c28/604] core spu text: using text renderer module "freetype"
+D/VLC: [aed64528/604] core scale: looking for video converter module matching "any": 15 candidates
+D/VLC: [aed64528/604] swscale scale: 32x32 (32x32) chroma: YUVA -> 16x16 (16x16) chroma: RGBA with scaling using Bicubic (good quality)
+D/VLC: [aed64528/604] core scale: using video converter module "swscale"
+D/VLC: [a0a54ca8/604] core scale: looking for video converter module matching "any": 15 candidates
+D/VLC: [a0a54ca8/604] yuvp scale: YUVP to YUVA converter
+D/VLC: [a0a54ca8/604] core scale: using video converter module "yuvp"
+D/VLC: [b4890528/604] core video output: Deinterlacing available
+D/VLC: [b4890528/604] core video output: deinterlace -1, mode blend, is_needed 0
+D/VLC: [b49caea8/604] core window: looking for vout window module matching "any": 1 candidates
+D/VLC: [b49caea8/604] iomx window: InitJNIFields success
+D/VLC: [b49caea8/604] core window: resized to 1920x1080
+D/VLC: [b49caea8/604] core window: using vout window module "android_window"
+D/VLC: [b4890528/605] core video output: Opening vout display wrapper
+D/VLC: [aec8afa8/605] core vout display: looking for vout display module matching "any": 5 candidates
+E/VLC: [b49caea8/605] android_window window: request 1 not implemented
+D/VLC: [aec8afa8/605] core vout display: VoutDisplayEvent 'resize' 1920x1080
+D/VLC: [aec8afa8/605] android_display vout display: using opaque
+D/VLC: [aec8afa8/605] core vout display: using vout display module "android_display"
+D/VLC: [aec8afa8/605] android_display vout display: PoolAlloc: request 26 frames
+D/VLC: [aec8afa8/605] android_display vout display: PoolAlloc: got 31 frames
+D/VLC: [b4890528/605] core video output: original format sz 1920x1088, of (0,0), vsz 1920x1080, 4cc ANOP, sar 1:1, msk r0x0 g0x0 b0x0
+E/VLC: [b49caea8/605] android_window window: request 0 not implemented
+E/VLC: [b49caea8/605] android_window window: request 0 not implemented
+D/VLC: [aec8afa8/605] android_display vout display: change display size: 1920x1080
+E/VLC: [aec8afa8/605] core vout display: Failed to change zoom
+D/VLC: [aed64c28/604] core spu text: removing module "freetype"
+D/VLC: [aec8afa8/605] android_display vout display: change source crop/aspect
+W/VLC: [aec8afa8/605] android_display vout display: Unknown request in android-display: 8
+E/VLC: [aec8afa8/605] core vout display: Failed to change Viewpoint
+E/VLC: [b49caea8/605] android_window window: request 1 not implemented
+D/VLC: [aed64c28/604] core spu text: looking for text renderer module matching "any": 1 candidates
+D/VLC: [a09ae948/604] core stream: creating access: file:///system/etc/system_fonts.xml
+D/VLC: [a09ae948/604] core stream:  (path: /system/etc/system_fonts.xml)
+D/VLC: [a09ae948/604] core stream: looking for access module matching "file": 20 candidates
+D/VLC: [a09ae948/604] core stream: using access module "filesystem"
+D/VLC: [a09ae9e8/604] core stream: looking for stream_filter module matching "prefetch,cache_read": 10 candidates
+D/VLC: [a09ae9e8/604] cache_read stream: Using stream method for AStream*
+D/VLC: [a09ae9e8/604] cache_read stream: starting pre-buffering
+D/VLC: [a09ae9e8/604] cache_read stream: received first data after 0 ms
+D/VLC: [a09ae9e8/604] cache_read stream: pre-buffering done 1024 bytes in 0s - 9615 KiB/s
+D/VLC: [a09ae9e8/604] core stream: using stream_filter module "cache_read"
+D/VLC: [9f137068/604] core xml reader: looking for xml reader module matching "any": 1 candidates
+D/VLC: [9f137068/604] core xml reader: using xml reader module "xml"
+D/VLC: [a09ae9e8/604] core stream: removing module "cache_read"
+D/VLC: [a09ae948/604] core stream: removing module "filesystem"
+D/VLC: [a0a4e908/604] core stream: creating access: file:///system/etc/fallback_fonts.xml
+D/VLC: [a0a4e908/604] core stream:  (path: /system/etc/fallback_fonts.xml)
+D/VLC: [a0a4e908/604] core stream: looking for access module matching "file": 20 candidates
+D/VLC: [a0a4e908/604] core stream: using access module "filesystem"
+D/VLC: [a09ae948/604] core stream: looking for stream_filter module matching "prefetch,cache_read": 10 candidates
+D/VLC: [a09ae948/604] cache_read stream: Using stream method for AStream*
+D/VLC: [a09ae948/604] cache_read stream: starting pre-buffering
+D/VLC: [a09ae948/604] cache_read stream: received first data after 0 ms
+D/VLC: [a09ae948/604] cache_read stream: pre-buffering done 1024 bytes in 0s - 7518 KiB/s
+D/VLC: [a09ae948/604] core stream: using stream_filter module "cache_read"
+D/VLC: [9f137068/604] core xml reader: looking for xml reader module matching "any": 1 candidates
+D/VLC: [9f137068/604] core xml reader: using xml reader module "xml"
+D/VLC: [a09ae948/604] core stream: removing module "cache_read"
+D/VLC: [a0a4e908/604] core stream: removing module "filesystem"
+D/VLC: [a09ae9e8/604] core stream: creating access: file:///vendor/etc/fallback_fonts.xml
+D/VLC: [a09ae9e8/604] core stream:  (path: /vendor/etc/fallback_fonts.xml)
+D/VLC: [a09ae9e8/604] core stream: looking for access module matching "file": 20 candidates
+E/VLC: [a09ae9e8/604] filesystem stream: cannot open file /vendor/etc/fallback_fonts.xml (No such file or directory)
+D/VLC: [a09ae9e8/604] core stream: no access modules matched
+E/VLC: [aed64c28/604] core spu text: no suitable access module for `file:///vendor/etc/fallback_fonts.xml'
+D/VLC: [aed64c28/604] core spu text: using text renderer module "freetype"
+D/VLC: [aed617a8/604] mediacodec decoder: MediaCodec via NDK closed
+D/VLC: [aed617a8/604] avcodec decoder: CPU flags: 0x0000003f
+D/VLC: [aed617a8/604] avcodec decoder: allowing 4 thread(s) for decoding
+D/VLC: [aed617a8/604] avcodec decoder: codec (h264) started
+D/VLC: [aed617a8/604] avcodec decoder: using frame thread mode with 4 threads
+D/VLC: [aed617a8/604] core decoder: using decoder module "avcodec"
+D/VLC: [aed617a8/606] avcodec decoder: available software decoder output format 0 (yuv420p)
+E/VLC-std: [h264 @ 0xa0a55380] Reinit context to 1920x1088, pix_fmt: 0
+W/VLC/VLCApplication: ErrorMessage VLC could not open the file "/vendor/etc/fallback_fonts.xml" (No such file or directory).
+E/VLC-std: MultiFramedRTPSource::doGetNextFrame1(): The total received frame size exceeds the client's buffer size (
+E/VLC-std: 100000).  20690 bytes of trailing data will be dropped!
+D/VLC: [9f133fa8/5fd] live555 demux: lost 20690 bytes
+D/VLC: [9f133fa8/5fd] live555 demux: increasing buffer size to 200000
+D/VLC: [b48cf028/5fd] core input: Buffering 84%
+D/VLC: [aec8afa8/605] core vout display: removing module "android_display"
+D/VLC: [9f137368/605] core gl: looking for opengl es2 module matching "any": 1 candidates
+D/VLC: [9f137368/605] egl_android gl: EGL version 1.4 Android META-EGL by Android
+D/VLC: [9f137368/605] egl_android gl:  extensions: EGL_KHR_get_all_proc_addresses EGL_ANDROID_presentation_time EGL_KHR_image EGL_KHR_image_base EGL_KHR_image_pixmap EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_fence_sync EGL_KHR_create_context EGL_EXT_create_context_robustness EGL_ANDROID_image_native_buffer EGL_KHR_wait_sync EGL_ANDROID_recordable 
+
+       [ 04-19 15:14:52.359  1494: 1541 I/         ]
+       Pre-Transform: 3
+D/s3g_oes_server: ZCompression 1 DCompression 1 SCompression 1 TexCompression 1 PCIECompression 1 VideoCompression 0 VPPCompression 0 DAutoClear 1 SAutoClear 1 ZAutoClear 1 
+D/s3g_oes2:  es1 patch ZCompression 1 DCompression 1 SCompression 1 TexCompression 1 PCIECompression 1 VideoCompression 0 VPPCompression 0 DAutoClear 1 SAutoClear 1 ZAutoClear 1 
+D/s3g_oes2:  es2 patch ZCompression 1 DCompression 1 SCompression 1 TexCompression 1 PCIECompression 1 VideoCompression 0 VPPCompression 0 DAutoClear 1 SAutoClear 1 ZAutoClear 1 
+D/VLC: [9f137368/605] core gl: using opengl es2 module "egl_android"
+D/VLC: [9f137368/605] core gl: removing module "egl_android"
+D/VLC: [b4890528/605] core video output: Opening vout display wrapper
+D/VLC: [aec8afa8/605] core vout display: looking for vout display module matching "any": 5 candidates
+E/VLC: [b49caea8/605] android_window window: request 1 not implemented
+D/VLC: [aec8afa8/605] core vout display: VoutDisplayEvent 'resize' 1920x1080
+D/VLC: [9f137368/605] core gl: looking for opengl es2 module matching "any": 1 candidates
+D/VLC: [9f137368/605] egl_android gl: EGL version 1.4 Android META-EGL by Android
+D/VLC: [9f137368/605] egl_android gl:  extensions: EGL_KHR_get_all_proc_addresses EGL_ANDROID_presentation_time EGL_KHR_image EGL_KHR_image_base EGL_KHR_image_pixmap EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_fence_sync EGL_KHR_create_context EGL_EXT_create_context_robustness EGL_ANDROID_image_native_buffer EGL_KHR_wait_sync EGL_ANDROID_recordable 
+
+       [ 04-19 15:14:52.385  1494: 1541 I/         ]
+       Pre-Transform: 3
+D/s3g_oes_server: ZCompression 1 DCompression 1 SCompression 1 TexCompression 1 PCIECompression 1 VideoCompression 0 VPPCompression 0 DAutoClear 1 SAutoClear 1 ZAutoClear 1 
+D/s3g_oes2:  es1 patch ZCompression 1 DCompression 1 SCompression 1 TexCompression 1 PCIECompression 1 VideoCompression 0 VPPCompression 0 DAutoClear 1 SAutoClear 1 ZAutoClear 1 
+D/s3g_oes2:  es2 patch ZCompression 1 DCompression 1 SCompression 1 TexCompression 1 PCIECompression 1 VideoCompression 0 VPPCompression 0 DAutoClear 1 SAutoClear 1 ZAutoClear 1 
+D/VLC: [9f137368/605] core gl: using opengl es2 module "egl_android"
+E/VLC: [9f137368/605] gles2 gl: shader 0: 
+E/VLC: [9f137368/605] gles2 gl: shader 1: 
+E/VLC: [9f137368/605] gles2 gl: shader program RGBA: 
+E/VLC: [9f137368/605] gles2 gl: shader 0: 
+E/VLC: [9f137368/605] gles2 gl: shader 1: 
+E/VLC: [9f137368/605] gles2 gl: shader program I420: 
+D/VLC: [b48cf028/5fd] core input: Stream buffering done (1535 ms in 249 ms)
+D/VLC: [aec8afa8/605] core vout display: using vout display module "gles2"
+D/VLC: [b4890528/605] core video output: original format sz 1920x1090, of (0,0), vsz 1920x1080, 4cc I420, sar 1:1, msk r0x0 g0x0 b0x0
+D/VLC: [b49d0d28/606] core generic: reusing provided vout
+E/VLC: [b49caea8/605] android_window window: request 0 not implemented
+E/VLC: [b49caea8/605] android_window window: request 0 not implemented
+E/VLC: [b49caea8/605] android_window window: request 1 not implemented
+D/VLC: [aed617a8/604] core decoder: Received first picture
+D/VLC: [b48cf028/5fd] core input: Decoder wait done in 119 ms
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 39 ms)
+D/VLC: [b4890528/605] core video output: picture might be displayed late (missing 4 ms)
+D/VLC: [aec8afa8/605] core vout display: auto hiding mouse cursor
+E/VLC: [b49caea8/605] android_window window: request 3 not implemented
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 255 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 222 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 155 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 88 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 55 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 20 ms)
+D/VLC: [9f133fa8/5fd] live555 demux: tk->rtpSource->hasBeenSynchronizedUsingRTCP()
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 806 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 674 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 541 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 404 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 304 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 179 ms)
+W/VLC: [b4890528/605] core video output: picture is too late to be displayed (missing 46 ms)
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 318215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 320215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 322215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 324215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 326215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 328215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 330215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 332215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 334215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 336215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+E/VLC: [aed617a8/604] core decoder: Timestamp conversion failed (delay 1500000, buffering 0, bound 9000000)
+E/VLC: [aed617a8/604] core decoder: Could not convert timestamp 338215160 for FFmpeg
+W/VLC: [aed617a8/604] core decoder: early picture skipped
+
