@@ -1,9 +1,0 @@
-﻿Build started 2017/4/17 22:14:41.
-     1>Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\stream_out_delay\stream_out_delay.vcxproj" on node 2 (clean target(s)).
-     1>_PrepareForClean:
-         Deleting file "Debug\stream_out_delay.lastbuildstate".
-     1>Done Building Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\stream_out_delay\stream_out_delay.vcxproj" (clean target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.09

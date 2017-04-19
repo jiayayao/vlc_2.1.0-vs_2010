@@ -1,9 +1,0 @@
-﻿Build started 2017/4/17 22:14:28.
-     1>Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\vorbis\vorbis.vcxproj" on node 2 (clean target(s)).
-     1>_PrepareForClean:
-         Deleting file "Debug\vorbis.lastbuildstate".
-     1>Done Building Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\vorbis\vorbis.vcxproj" (clean target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.05

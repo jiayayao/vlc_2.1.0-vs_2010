@@ -1,9 +1,0 @@
-﻿Build started 2017/4/17 22:14:56.
-     1>Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\netsync\netsync.vcxproj" on node 2 (clean target(s)).
-     1>_PrepareForClean:
-         Deleting file "Debug\netsync.lastbuildstate".
-     1>Done Building Project "D:\Study\vlc\vlc-2.1.0.subproject-2010\plugins\netsync\netsync.vcxproj" (clean target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.06
