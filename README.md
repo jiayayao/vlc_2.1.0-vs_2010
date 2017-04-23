@@ -1,4 +1,2 @@
 # vlc_2.1.0-vs_2010
-#基于sunqueen配置好的工程：https://github.com/sunqueen/vlc-2.1.0.subproject-2010。
-#在此基础上对原有代码进行注释和学习，主要集中在编解码，RTSP部分。
-#doc文件夹下是本人对Vlc工程的一些理解，部分记录在博客中：http://www.cnblogs.com/jiayayao/。
+<div id="spnEditorSign" style="position:relative;zoom:1"><div id="spnEditorSign" style="position:relative;zoom:1"><ul><li>&nbsp; &nbsp; 基于sunqueen配置好的工程：<a href="https://github.com/sunqueen/vlc-2.1.0.subproject-2010，该工程下载后可以使用vs2010直接编译，调试学习非常方便。" _src="https://github.com/sunqueen/vlc-2.1.0.subproject-2010，该工程下载后可以使用vs2010直接编译，调试学习非常方便。">https://github.com/sunqueen/vlc-2.1.0.subproject-2010</a></li><li>&nbsp; &nbsp; 该工程下载后可以使用vs2010直接编译，调试学习Windows版的vlc非常方便； &nbsp;&nbsp;</li><li>&nbsp; &nbsp; doc文件夹下包含一些对vlc工程的理解，&nbsp;主要集中在RTSP/H264/封包格式等部分，部分记录在博客中：http://www.cnblogs.com/jiayayao/；</li></ul></div><div style="clear:both"></div></div>
