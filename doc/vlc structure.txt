@@ -1,12 +1,11 @@
 vlc对各个平台的线程进行了封装，其封装结构可以用来参考。比如一个的app的上层逻辑想做成三个平台（PC，Android，iOS)共用代码，那么可以参考vlc的实现，其实最主要的就是对底层线程、文件系统、网络等API的封装。
+vlc创建的线程都是通过vlc_clone_attr或vlc_clone函数创建的，创建线程的统一入口为vlc_entry()，可以在vlc_entry函数内设置断点，查看那些操作会创建线程，创建了几个线程，创建出来的线程做了那些事情。
 
 当点击打开RTSP流地址后，vlc会执行如下操作：
 1. 开启线程，动态加载live555模块；
 2. 在live555模块的Open函数中，创建RTSPClient等重要结构体；
 3. 创建解码线程，分别对Video和Audio进行解码；视频可以使用avcodec进行解码
 
-src/input/decoder.c解码
-接收线程从网络中接收数据，组成block，放入fifo中；
-解码线程从fifo中取出block来解码，交由其他模块去显示；
 
-解码线程，图形渲染线程
+
+http://www.cnblogs.com/jiayayao/p/6752388.html
