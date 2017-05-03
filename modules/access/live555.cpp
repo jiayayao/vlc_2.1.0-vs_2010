@@ -237,7 +237,7 @@ struct demux_sys_t
     float            f_seek_request;/* In case we receive a seek request while paused*/
 };
 
-
+// 派生自RTSPClient，仅仅为了记录demux_sys_t变量
 class RTSPClientVlc : public RTSPClient
 {
 public:
@@ -591,6 +591,7 @@ createnew:
     if( var_CreateGetBool( p_demux, "rtsp-http" ) )
         i_http_port = var_InheritInteger( p_demux, "rtsp-http-port" );
 
+	// 创建RTSP客户端
     p_sys->rtsp = new RTSPClientVlc( *p_sys->env, psz_url,
                                      var_InheritInteger( p_demux, "verbose" ) > 1 ? 1 : 0,
                                      "LibVLC/"VERSION, i_http_port, p_sys );

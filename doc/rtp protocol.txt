@@ -5,4 +5,8 @@
 扩展标志Extension：0（false）
 CSRC计数器：0
 标记：0
-有效载荷类型PT：96
+有效载荷类型PT：DynamicRTP-Type-96(96)
+Sequence number:
+Timestamp:
+同步信源（SSRC，Synchronization Source identifier）:32bit
+特约信源（CSRC，Contributing Source identifier）：32bit

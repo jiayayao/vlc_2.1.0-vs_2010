@@ -1,7 +1,8 @@
-vlcwin->libvlc_new->libvlc_add_intf
-
-解码线程：
-src\video_output\video_output.c
-vlc_entry->Thread->ThreadManage->ThreadDisplayPicture->ThreadDisplayPreparePicture
-
-vlc\src\input\decoder.c
+    RTSP版本一般为RTSP/1.0。
+    状态码表示对应消息的执行结果。
+    部分状态码与文本解释对应列表如下：
+   状态码       文本解释                      含义
+  “200”         OK                              执行成功
+  “400”         Bad Request                 错误请求
+  “404”        Not Found                  未找到
+  “500”        Internal Server Error   服务器内部错误

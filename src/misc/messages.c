@@ -257,8 +257,8 @@ static void Win32DebugOutputMsg (void* d, int type, const vlc_log_t *p_item,
     VLC_UNUSED(p_item);
 
     const signed char *pverbose = (const signed char *)d;			// sunqueen modify
-    if (pverbose && (*pverbose < 0 || *pverbose < (type - VLC_MSG_ERR)))
-        return;
+    //if (pverbose && (*pverbose < 0 || *pverbose < (type - VLC_MSG_ERR)))
+    //    return;
 
     va_list dol2;
 //    va_copy (dol2, dol);			// sunqueen modify
