@@ -75,6 +75,7 @@ using namespace std;
  * Module descriptor
  *****************************************************************************/
 static int  Open ( vlc_object_t * );
+// 发送RTSP::TEAEDOWN command
 static void Close( vlc_object_t * );
 
 #define KASENNA_TEXT N_( "Kasenna RTSP dialect")
@@ -226,7 +227,7 @@ struct demux_sys_t
     bool             b_no_data;     /* if we never received any data */
     int              i_no_data_ti;  /* consecutive number of TaskInterrupt */
 
-    char             event_rtsp;
+    char             event_rtsp;// 标志rtsp执行结果，任务超时时会修改该值
     char             event_data;
 
     bool             b_get_param;   /* Does the server support GET_PARAMETER */
@@ -259,8 +260,11 @@ public:
 static int Demux  ( demux_t * );
 static int Control( demux_t *, int, va_list );
 
+// 创建RTSP客户端，发送RTSP::OPTION command
 static int Connect      ( demux_t * );
+// 发送RTSP::SETUP command
 static int SessionsSetup( demux_t * );
+// 发送RTSP::PLAY command
 static int Play         ( demux_t *);
 static int ParseASF     ( demux_t * );
 static int RollOverTcp  ( demux_t * );
@@ -479,6 +483,7 @@ static void default_live555_callback( RTSPClient* client, int result_code, char*
 }
 
 /* return true if the RTSP command succeeded */
+// vlc的发送RTSP command超时机制，超时时会执行TaskInterruptRTSP
 static bool wait_Live555_response( demux_t *p_demux, int i_timeout = 0 /* ms */ )
 {
     TaskToken task;
@@ -501,9 +506,12 @@ static bool wait_Live555_response( demux_t *p_demux, int i_timeout = 0 /* ms */ 
         /* remove the task */
         p_sys->scheduler->unscheduleDelayedTask( task );
     }
+	// 正常情况下p_sys->b_error会被置为false，函数返回true
     return !p_sys->b_error;
 }
 
+// 回调函数
+// 主要是为了依次执行RTSP的开启流程
 static void continueAfterDESCRIBE( RTSPClient* client, int result_code,
                                    char* result_string )
 {
@@ -2016,6 +2024,7 @@ static void StreamClose( void *p_private )
 /*****************************************************************************
  *
  *****************************************************************************/
+// 将p_sys->event_rtsp置为非0，其他线程会读取该值，进而退出循环
 static void TaskInterruptRTSP( void *p_private )
 {
     demux_t *p_demux = (demux_t*)p_private;
