@@ -74,8 +74,9 @@ using namespace std;
 /*****************************************************************************
  * Module descriptor
  *****************************************************************************/
+// 模块加载
 static int  Open ( vlc_object_t * );
-// 发送RTSP::TEAEDOWN command
+// 模块关闭，发送RTSP::TEAEDOWN command
 static void Close( vlc_object_t * );
 
 #define KASENNA_TEXT N_( "Kasenna RTSP dialect")
@@ -202,8 +203,8 @@ struct demux_sys_t
     RTSPClientVlc    *rtsp;
 
     /* */
-    int              i_track;
-    live_track_t     **track;
+    int              i_track;// 数组的个数
+    live_track_t     **track;// 数组的首指针
 
     /* Weird formats */
     asf_header_t     asfh;
@@ -1795,7 +1796,7 @@ static void StreamRead( void *p_private, unsigned int i_size,
     live_track_t   *tk = (live_track_t*)p_private;
     demux_t        *p_demux = tk->p_demux;
     demux_sys_t    *p_sys = p_demux->p_sys;
-    block_t        *p_block;
+    block_t        *p_block;// 存储接收到的数据
 
     //msg_Dbg( p_demux, "pts: %d", pts.tv_sec );
 

@@ -11,7 +11,3 @@ liveMedia项目(http://www.live555.com/)的源代码包括四个基本的库，各种测试代码以及
 UsageEnvironment和TaskScheduler类用于事件的调度，实现异步读取事件的句柄的设置以及错误信息的输出。另外，还有一个HashTable类定义了一个通用的hash表，其它代码要用到这个表。这些都是抽象类，在应用程序中基于这些类来实现自己的子类。
 groupsock类是对网络接口的封装，用于收发数据包。正如名字本身，groupsock主要是面向多播数据的收发的，它也同时支持单播数据的收发。
 liveMedia库中有一系列类，基类是Medium，这些类针对不同的流媒体类型和编码。各种测试代码在testProgram目录下，比如openRTSP等，这些代码有助于理解liveMedia的应用。
-MediaServer是一个纯粹的RTSP服务器。支持多种格式的媒体文件:*TS流文件，扩展名ts。*PS流文件，扩展名mpg。
-*MPEG-4视频基本流文件，扩展名m4e。*MP3文件，扩展名mp3。
-*WAV文件(PCM)，扩展名wav。*AMR音频文件，扩展名.amr。
-*AAC文件，ADTS格式，扩展名aac。

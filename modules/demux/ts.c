@@ -1836,7 +1836,7 @@ static block_t* ReadTSPacket( demux_t *p_demux )
 {
     demux_sys_t *p_sys = p_demux->p_sys;
 
-    block_t     *p_pkt;
+    block_t     *p_pkt;// 存储读取的ts包信息
 
     /* Get a new TS packet */
     if( !( p_pkt = stream_Block( p_demux->s, p_sys->i_packet_size ) ) )
@@ -1846,6 +1846,7 @@ static block_t* ReadTSPacket( demux_t *p_demux )
     }
 
     /* Check sync byte and re-sync if needed */
+	// TS流第一个字节为同步字节，检查同步字节看是否需要重同步
     if( p_pkt->p_buffer[0] != 0x47 )
     {
         msg_Warn( p_demux, "lost synchro" );
