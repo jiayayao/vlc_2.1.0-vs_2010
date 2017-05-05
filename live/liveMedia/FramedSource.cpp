@@ -69,10 +69,10 @@ void FramedSource::getNextFrame(unsigned char* to, unsigned maxSize,
   fMaxSize = maxSize;
   fNumTruncatedBytes = 0; // by default; could be changed by doGetNextFrame()
   fDurationInMicroseconds = 0; // by default; could be changed by doGetNextFrame()
-  fAfterGettingFunc = afterGettingFunc;
-  fAfterGettingClientData = afterGettingClientData;
-  fOnCloseFunc = onCloseFunc;
-  fOnCloseClientData = onCloseClientData;
+  fAfterGettingFunc = afterGettingFunc;// StreamRead
+  fAfterGettingClientData = afterGettingClientData;// live_track_t
+  fOnCloseFunc = onCloseFunc;// StreamClose
+  fOnCloseClientData = onCloseClientData;// live_track_t
   fIsCurrentlyAwaitingData = True;
 
   doGetNextFrame();

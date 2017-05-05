@@ -73,6 +73,7 @@ void BasicTaskScheduler0::unscheduleDelayedTask(TaskToken& prevTask) {
   delete alarmHandler;
 }
 
+// watchVariable在当超时或者需要中断时会被其他线程修改，从而退出循环
 void BasicTaskScheduler0::doEventLoop(char* watchVariable) {
   // Repeatedly loop, handling readble sockets and timed events:
   while (1) {

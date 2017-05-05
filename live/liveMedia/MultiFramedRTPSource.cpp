@@ -221,6 +221,8 @@ void MultiFramedRTPSource::networkReadHandler(MultiFramedRTPSource* source, int 
   source->networkReadHandler1();
 }
 
+// 做了两件事，一件是读取网络数据放入ReorderingPacketBuffer管理的BufferedPacket中；
+// 另一件是读取的BufferedPacket，进行一系列拆包操作后，将数据放入数据fifo中
 void MultiFramedRTPSource::networkReadHandler1() {
   BufferedPacket* bPacket = fPacketReadInProgress;
   if (bPacket == NULL) {
@@ -309,11 +311,11 @@ void MultiFramedRTPSource::networkReadHandler1() {
     bPacket->assignMiscParams(rtpSeqNo, rtpTimestamp, presentationTime,
 			      hasBeenSyncedUsingRTCP, rtpMarkerBit,
 			      timeNow);
-    if (!fReorderingBuffer->storePacket(bPacket)) break;
+    if (!fReorderingBuffer->storePacket(bPacket)) break;// 存储包
 
-    readSuccess = True;
+    readSuccess = True;// 读取成功
   } while (0);
-  if (!readSuccess) fReorderingBuffer->freePacket(bPacket);
+  if (!readSuccess) fReorderingBuffer->freePacket(bPacket);// 如果读取不成功，则释放内存
 
   doGetNextFrame1();
   // If we didn't get proper data this time, we'll get another chance

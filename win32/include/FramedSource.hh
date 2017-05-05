@@ -83,10 +83,10 @@ private:
   virtual Boolean isFramedSource() const;
 
 private:
-  afterGettingFunc* fAfterGettingFunc;
-  void* fAfterGettingClientData;
-  onCloseFunc* fOnCloseFunc;
-  void* fOnCloseClientData;
+  afterGettingFunc* fAfterGettingFunc;// StreamRead
+  void* fAfterGettingClientData;// live_track_t
+  onCloseFunc* fOnCloseFunc;// StreamClose
+  void* fOnCloseClientData;// live_track_t
 
   Boolean fIsCurrentlyAwaitingData;
 };

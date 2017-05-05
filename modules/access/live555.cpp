@@ -170,8 +170,8 @@ typedef struct
     bool            b_discard_trunc;
     stream_t        *p_out_muxed;    /* for muxed stream */
 
-    uint8_t         *p_buffer;
-    unsigned int    i_buffer;
+    uint8_t         *p_buffer;// 数组指针
+    unsigned int    i_buffer;// 数组个数
 
     bool            b_rtcp_sync;
     char            waiting;

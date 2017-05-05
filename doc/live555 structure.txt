@@ -11,3 +11,40 @@ liveMedia项目(http://www.live555.com/)的源代码包括四个基本的库，各种测试代码以及
 UsageEnvironment和TaskScheduler类用于事件的调度，实现异步读取事件的句柄的设置以及错误信息的输出。另外，还有一个HashTable类定义了一个通用的hash表，其它代码要用到这个表。这些都是抽象类，在应用程序中基于这些类来实现自己的子类。
 groupsock类是对网络接口的封装，用于收发数据包。正如名字本身，groupsock主要是面向多播数据的收发的，它也同时支持单播数据的收发。
 liveMedia库中有一系列类，基类是Medium，这些类针对不同的流媒体类型和编码。各种测试代码在testProgram目录下，比如openRTSP等，这些代码有助于理解liveMedia的应用。
+
+
+RTPInterface：RTPSource的成员变量，其成员函数handleRead会读取网络数据存入BufferedPacket内，该类最终会调到UDP的发送接收函数。
+Boolean RTPInterface::handleRead(unsigned char* buffer, unsigned bufferMaxSize,
+				 unsigned& bytesRead, struct sockaddr_in& fromAddress, Boolean& packetReadWasIncomplete)
+
+向左箭头（“<-”）为继承关系
+BufferedPacketFactory:工厂模式生成BufferedPacket包
+BufferedPacketFactory<-H264BufferedPacketFactory：专门生产H264BufferedPacket的工厂
+
+BufferedPacket：用于存储媒体的RTP数据包
+BufferedPacket<-H264BufferedPacket:用于存储H264媒体RTP数据包
+
+该类有一个重要函数fillInData，是由RTPInterface读取数据存入包中；
+Boolean BufferedPacket::fillInData(RTPInterface& rtpInterface, Boolean& packetReadWasIncomplete)；
+
+
+在SessionsSetup的时候（也是模块加载的时候），会根据Source类型，选定生产BufferedPacket的工厂类型，即如果Source是H264格式的话，就会new H264BufferedPacketFactory，之后在接收数据的时候就会生产H264BufferedPacket用于存储H264媒体数据。
+
+ReorderingPacketBuffer：MultiFramedRTPSource的成员变量，用于管理多个BufferedPacket
+
+Source相关类：
+Source相关类的继承关系：Medium<-MediaSource<-FramedSource<-RTPSource<-MultiFramedRTPSource<-H264VideoRTPSource
+在SessionsSetup的时候，会数据源的类型，选定Source的类型，即如果数据源是H264格式的话，就会调用
+static H264VideoRTPSource*
+  createNew(UsageEnvironment& env, Groupsock* RTPgs,
+	    unsigned char rtpPayloadFormat,
+	    unsigned rtpTimestampFrequency = 90000);
+		
+		
+vlc在播放IPC时，会开启一个线程调用Demux()。Demux()主要做了两件事，一件是读取网络数据放入ReorderingPacketBuffer管理的BufferedPacket中；另一件是读取的BufferedPacket，进行一系列拆包操作后，将数据放入数据fifo中，堆栈如图所示：
+p_sys->scheduler->doEventLoop( &p_sys->event_data );
+doEventLoop会进入死循环，直到p_sys->event_data的值被中断或者超时改变，从而退出循环。当有网络数据到来的时候，doEventLoop会执行SingleStep->...->doGetNextFrame1()，在doGetNextFrame1()函数中读取RTP数据。
+
+
+
+
