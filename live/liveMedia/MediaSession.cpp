@@ -30,6 +30,7 @@ MediaSession* MediaSession::createNew(UsageEnvironment& env,
 				      char const* sdpDescription) {
   MediaSession* newSession = new MediaSession(env);
   if (newSession != NULL) {
+	  // 根据SDP信息初始化RTSP session
     if (!newSession->initializeWithSDP(sdpDescription)) {
       delete newSession;
       return NULL;

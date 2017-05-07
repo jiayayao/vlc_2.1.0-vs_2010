@@ -99,7 +99,7 @@ private:
   virtual void getAttributes() const;
 
 private:
-  unsigned char fRTPPayloadFormat;
+  unsigned char fRTPPayloadFormat;// RTSP session建立时会根据SDP信息对其赋值
   unsigned fTimestampFrequency;
   u_int32_t fSSRC;
 

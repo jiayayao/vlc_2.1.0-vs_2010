@@ -195,6 +195,7 @@ void MultiFramedRTPSource::doGetNextFrame1() {
 	// Common case optimization: There are no more queued incoming packets, so this code will not get
 	// executed again without having first returned to the event loop.  Call our 'after getting' function
 	// directly, because there's no risk of a long chain of recursion (and thus stack overflow):
+	// 会执行StreamRead，将接收到的包送至数据fifo，由解码线程解码
 	afterGetting(this);
       } else {
 	// Special case: Call our 'after getting' function via the event loop.
@@ -232,6 +233,7 @@ void MultiFramedRTPSource::networkReadHandler1() {
 
   // Read the network packet, and perform sanity checks on the RTP header:
   Boolean readSuccess = False;
+  // do-while(0)结构，出现错误直接break
   do {
     Boolean packetReadWasIncomplete = fPacketReadInProgress != NULL;
     if (!bPacket->fillInData(fRTPInterface, packetReadWasIncomplete)) break;
@@ -250,29 +252,40 @@ void MultiFramedRTPSource::networkReadHandler1() {
 
     // Check for the 12-byte RTP header:
     if (bPacket->dataSize() < 12) break;
+	// 读取RTP头，向前移4个字节
     unsigned rtpHdr = ntohl(*(u_int32_t*)(bPacket->data())); ADVANCE(4);
+	// 读取RTP头中的标记位
     Boolean rtpMarkerBit = (rtpHdr&0x00800000) != 0;
+	// 读取时间戳，向前移4个字节
     unsigned rtpTimestamp = ntohl(*(u_int32_t*)(bPacket->data()));ADVANCE(4);
+	// 读取SSRC，向前移4个字节
     unsigned rtpSSRC = ntohl(*(u_int32_t*)(bPacket->data())); ADVANCE(4);
 
     // Check the RTP version number (it should be 2):
+	// 检查RTP头版本，不是2的话，break
     if ((rtpHdr&0xC0000000) != 0x80000000) break;
 
     // Skip over any CSRC identifiers in the header:
+	// 跳过CSRC计数字节
     unsigned cc = (rtpHdr>>24)&0xF;
     if (bPacket->dataSize() < cc) break;
     ADVANCE(cc*4);
 
     // Check for (& ignore) any RTP header extension
+	// 如果扩展头标志被置位
     if (rtpHdr&0x10000000) {
       if (bPacket->dataSize() < 4) break;
+	  // 获取扩展头
       unsigned extHdr = ntohl(*(u_int32_t*)(bPacket->data())); ADVANCE(4);
+	  // 获取扩展字节数
       unsigned remExtSize = 4*(extHdr&0xFFFF);
       if (bPacket->dataSize() < remExtSize) break;
+	  // 直接跳过扩展字节？？？
       ADVANCE(remExtSize);
     }
 
     // Discard any padding bytes:
+	// 如果填充标志被置位，直接丢弃不处理
     if (rtpHdr&0x20000000) {
       if (bPacket->dataSize() == 0) break;
       unsigned numPaddingBytes
@@ -281,6 +294,8 @@ void MultiFramedRTPSource::networkReadHandler1() {
       bPacket->removePadding(numPaddingBytes);
     }
     // Check the Payload Type.
+	// 检查载荷类型，如果源数据H264类型，则其值为96
+	// 如果与我们生成的source类型不同，则break
     if ((unsigned char)((rtpHdr&0x007F0000)>>16)
 	!= rtpPayloadFormat()) {
       break;
@@ -293,12 +308,14 @@ void MultiFramedRTPSource::networkReadHandler1() {
       fLastReceivedSSRC = rtpSSRC;
       fReorderingBuffer->resetHaveSeenFirstPacket();
     }
+	// RTP包序号，随RTP数据包而自增，由接收者用来探测包损失
     unsigned short rtpSeqNo = (unsigned short)(rtpHdr&0xFFFF);
     Boolean usableInJitterCalculation
       = packetIsUsableInJitterCalculation((bPacket->data()),
 						  bPacket->dataSize());
     struct timeval presentationTime; // computed by:
     Boolean hasBeenSyncedUsingRTCP; // computed by:
+	// 根据数据包的一些信息，进行一些计算和记录
     receptionStatsDB()
       .noteIncomingPacket(rtpSSRC, rtpSeqNo, rtpTimestamp,
 			  timestampFrequency(),
@@ -308,15 +325,18 @@ void MultiFramedRTPSource::networkReadHandler1() {
     // Fill in the rest of the packet descriptor, and store it:
     struct timeval timeNow;
     gettimeofday(&timeNow, NULL);
+	// 将计算所得的一些参数再赋值到包中
     bPacket->assignMiscParams(rtpSeqNo, rtpTimestamp, presentationTime,
 			      hasBeenSyncedUsingRTCP, rtpMarkerBit,
 			      timeNow);
-    if (!fReorderingBuffer->storePacket(bPacket)) break;// 存储包
+	// 经过以上判断和检查，没有发现问题，则由管理类fReorderingBuffer存储包
+    if (!fReorderingBuffer->storePacket(bPacket)) break;
 
     readSuccess = True;// 读取成功
   } while (0);
   if (!readSuccess) fReorderingBuffer->freePacket(bPacket);// 如果读取不成功，则释放内存
 
+  // 将读取到的数据包送至数据fifo中，等待解码线程解码
   doGetNextFrame1();
   // If we didn't get proper data this time, we'll get another chance
 }
