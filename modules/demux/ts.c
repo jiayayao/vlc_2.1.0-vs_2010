@@ -297,7 +297,7 @@ struct demux_sys_t
     int64_t     *p_pos;
 
     /* All pid */
-    ts_pid_t    pid[8192];
+    ts_pid_t    pid[8192];// 保存所有可能的pid
 
     /* All PMT */
     bool        b_user_pmt;
@@ -962,11 +962,14 @@ static int Demux( demux_t *p_demux )
 
         /* Parse the TS packet */
         ts_pid_t *p_pid = &p_sys->pid[PIDGet( p_pkt )];
+		// 这里可以把接收到的包的pid打出来，方便调试
+		//msg_Dbg( p_demux, "received pkt pid[%d]", PIDGet( p_pkt ) );
 
         if( p_pid->b_valid )
         {
             if( p_pid->psi )
             {
+				// 如果是PAT或者0x11 0x12等
                 if( p_pid->i_pid == 0 || ( p_sys->b_dvb_meta && ( p_pid->i_pid == 0x11 || p_pid->i_pid == 0x12 || p_pid->i_pid == 0x14 ) ) )
                 {
                     dvbpsi_PushPacket( p_pid->psi->handle, p_pkt->p_buffer );
@@ -3944,6 +3947,7 @@ static void PMTCallBack( void *data, dvbpsi_pmt_t *p_pmt )
         for( int i_prg = 0; !pmt && i_prg < p_sys->pmt[i]->psi->i_prg; i_prg++ )
         {
             const int i_pmt_number = p_sys->pmt[i]->psi->prg[i_prg]->i_number;
+			// 如果接收到的节目ID与PAT表中的节目ID一致
             if( i_pmt_number != TS_USER_PMT_NUMBER &&
                 i_pmt_number == p_pmt->i_program_number )
             {
@@ -4029,6 +4033,7 @@ static void PMTCallBack( void *data, dvbpsi_pmt_t *p_pmt )
         }
 
     dvbpsi_pmt_es_t      *p_es;
+	// for循环，读取该节目对应PMT中所有的信息（包括PCR、视频、音频等）的PID
     for( p_es = p_pmt->p_first_es; p_es != NULL; p_es = p_es->p_next )
     {
         ts_pid_t tmp_pid, *old_pid = 0, *pid = &tmp_pid;
@@ -4289,11 +4294,12 @@ static void PATCallBack( void *data, dvbpsi_pat_t *p_pat )
     for( p_program = p_pat->p_first_program; p_program != NULL;
          p_program = p_program->p_next )
     {
+		// 依次输出PAT表中的节目，包括其number和PID
         msg_Dbg( p_demux, "  * number=%d pid=%d", p_program->i_number,
                  p_program->i_pid );
         if( p_program->i_number == 0 )
             continue;
-
+		// 节目的PID就是它所对应的PMT，这里获取该节目对应的PMT
         ts_pid_t *pmt = &p_sys->pid[p_program->i_pid];
 
         ValidateDVBMeta( p_demux, p_program->i_pid );
@@ -4327,6 +4333,7 @@ static void PATCallBack( void *data, dvbpsi_pat_t *p_pat )
             msg_Err( p_demux, "PATCallback failed attaching PMTCallback to program %d",
                      p_program->i_number );
 #else
+		// 注册PMT回调函数
         prg->handle = dvbpsi_AttachPMT( p_program->i_number, PMTCallBack, p_demux );
 #endif
         prg->i_number = p_program->i_number;
