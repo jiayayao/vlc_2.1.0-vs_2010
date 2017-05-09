@@ -640,6 +640,7 @@ static int Open( vlc_object_t *p_this )
         return VLC_EGENERIC;
     }
 #else
+	// Open时注册PAT的回调函数
     pat->psi->handle = dvbpsi_AttachPAT( PATCallBack, p_demux );
 #endif
     if( p_sys->b_dvb_meta )
@@ -963,10 +964,11 @@ static int Demux( demux_t *p_demux )
         /* Parse the TS packet */
         ts_pid_t *p_pid = &p_sys->pid[PIDGet( p_pkt )];
 		// 这里可以把接收到的包的pid打出来，方便调试
-		//msg_Dbg( p_demux, "received pkt pid[%d]", PIDGet( p_pkt ) );
+		msg_Dbg( p_demux, "received pkt pid[%d]", PIDGet( p_pkt ) );
 
         if( p_pid->b_valid )
         {
+			// 如果当前包是PSI信息，使用dvbpsi库解表
             if( p_pid->psi )
             {
 				// 如果是PAT或者0x11 0x12等
@@ -986,6 +988,7 @@ static int Demux( demux_t *p_demux )
             }
             else if( !p_sys->b_udp_out )
             {
+				// 是否已经获取了一整帧的数据
                 b_frame = GatherData( p_demux, p_pid, p_pkt );
             }
             else
@@ -2182,12 +2185,12 @@ static void PCRHandle( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
 
 static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
 {
-    const uint8_t *p = p_bk->p_buffer;
-    const bool b_unit_start = p[1]&0x40;
-    const bool b_scrambled  = p[3]&0x80;
-    const bool b_adaptation = p[3]&0x20;
-    const bool b_payload    = p[3]&0x10;
-    const int  i_cc         = p[3]&0x0f; /* continuity counter */
+    const uint8_t *p = p_bk->p_buffer;// 第一个字节（8位）为同步字节，此处没有获取
+    const bool b_unit_start = p[1]&0x40;// payload_unit_start_indicator是否被置位
+    const bool b_scrambled  = p[3]&0x80;// 是否加扰
+    const bool b_adaptation = p[3]&0x20;// 是否有调整字段控制
+    const bool b_payload    = p[3]&0x10;// 有无payload
+    const int  i_cc         = p[3]&0x0f; /* continuity counter */// 获取连续的计数
     bool       b_discontinuity = false;  /* discontinuity */
 
     /* transport_scrambling_control is ignored */
@@ -2202,8 +2205,10 @@ static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
 
     /* For now, ignore additional error correction
      * TODO: handle Reed-Solomon 204,188 error correction */
+	// 目前暂时忽略扩展错误纠正的情况
     p_bk->i_buffer = TS_PACKET_SIZE_188;
 
+	// 至少发生了1位错误，且不可纠正
     if( p[1]&0x80 )
     {
         msg_Dbg( p_demux, "transport_error_indicator set (pid=%d)",
@@ -2223,11 +2228,13 @@ static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
     {
         /* We don't have any adaptation_field, so payload starts
          * immediately after the 4 byte TS header */
+		// 没有调整字段，所以有效净荷紧跟着4个字节的TS头
         i_skip = 4;
     }
     else
     {
         /* p[4] is adaptation_field_length minus one */
+		// 如果有调整字段，那么TS头后的第一个字节就是调整字段的长度
         i_skip = 5 + p[4];
         if( p[4] > 0 )
         {
@@ -2373,6 +2380,7 @@ static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
             if( pid->es->i_data_size > 0 &&
                 pid->es->i_data_gathered >= pid->es->i_data_size )
             {
+				// 认为此时已经获取了一帧数据，那么push到block的队列中等待解码线程解码
                 ParseData( p_demux, pid );
                 i_ret = true;
             }
@@ -4196,6 +4204,7 @@ static void PMTCallBack( void *data, dvbpsi_pmt_t *p_pmt )
         free( pp_clean );
 }
 
+// PAT每隔一段时间就会发一次
 static void PATCallBack( void *data, dvbpsi_pat_t *p_pat )
 {
     demux_t              *p_demux = (demux_t *)data;			// sunqueen modify
