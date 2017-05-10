@@ -236,24 +236,28 @@ void RTPReceptionStats
 		     unsigned packetSize) {
   if (!fHaveSeenInitialSequenceNumber) initSeqNum(seqNum);
 
-  ++fNumPacketsReceivedSinceLastReset;
-  ++fTotNumPacketsReceived;
+  ++fNumPacketsReceivedSinceLastReset;// 上次重置后，接收到的rtp包个数
+  ++fTotNumPacketsReceived; // 总共接收到的rtp包个数
   u_int32_t prevTotBytesReceived_lo = fTotBytesReceived_lo;
   fTotBytesReceived_lo += packetSize;
   if (fTotBytesReceived_lo < prevTotBytesReceived_lo) { // wrap-around
+	  // fTotBytesReceived_lo是一个无符号32位整数，当达到最大值后，会从新开始计算。
     ++fTotBytesReceived_hi;
   }
 
   // Check whether the new sequence number is the highest yet seen:
-  unsigned oldSeqNum = (fHighestExtSeqNumReceived&0xFFFF);
-  unsigned seqNumCycle = (fHighestExtSeqNumReceived&0xFFFF0000);
+  unsigned oldSeqNum = (fHighestExtSeqNumReceived&0xFFFF);//取低16位数据
+  unsigned seqNumCycle = (fHighestExtSeqNumReceived&0xFFFF0000);//取高16位数据
   unsigned seqNumDifference = (unsigned)((int)seqNum-(int)oldSeqNum);
   unsigned newSeqNum = 0;
+  //当前序列号大于前一次的序列号，看似是合法的rtp包。但还是要检测是否出现归零的情况。
   if (seqNumLT((u_int16_t)oldSeqNum, seqNum)) {
     // This packet was not an old packet received out of order, so check it:
     
     if (seqNumDifference >= 0x8000) {
       // The sequence number wrapped around, so start a new cycle:
+	 //出现归零的情况，0x8000最高位(即16位)上为1，其余位为0
+	 // 前后序列号差距如此到，认定出现归零的情况
       seqNumCycle += 0x10000;
     }
     
@@ -280,22 +284,25 @@ void RTPReceptionStats
   gettimeofday(&timeNow, NULL);
   if (fLastPacketReceptionTime.tv_sec != 0
       || fLastPacketReceptionTime.tv_usec != 0) {
+	// 计算两次接收到RTP包的时间间隔，以接收方时间计算
     unsigned gap
       = (timeNow.tv_sec - fLastPacketReceptionTime.tv_sec)*MILLION
       + timeNow.tv_usec - fLastPacketReceptionTime.tv_usec; 
+	// 如果时间间隔超过了曾经出现的上限和下限，则记录
     if (gap > fMaxInterPacketGapUS) {
       fMaxInterPacketGapUS = gap;
     }
     if (gap < fMinInterPacketGapUS) {
       fMinInterPacketGapUS = gap;
     }
+	// 累加所有的RTP时间间隔
     fTotalInterPacketGaps.tv_usec += gap;
     if (fTotalInterPacketGaps.tv_usec >= MILLION) {
       ++fTotalInterPacketGaps.tv_sec;
       fTotalInterPacketGaps.tv_usec -= MILLION;
     }
   }
-  fLastPacketReceptionTime = timeNow;
+  fLastPacketReceptionTime = timeNow;// 更新接收RTP的时间间隔
 
   // Compute the current 'jitter' using the received packet's RTP timestamp,
   // and the RTP timestamp that would correspond to the current time.
@@ -303,18 +310,20 @@ void RTPReceptionStats
   // Note, however, that we don't use this packet if its timestamp is
   // the same as that of the previous packet (this indicates a multi-packet
   // fragment), or if we've been explicitly told not to use this packet.
+  // 如果本次RTP的timestamp和上次的RTP timestamp一致，则不计算抖动
   if (useForJitterCalculation
       && rtpTimestamp != fPreviousPacketRTPTimestamp) {
-    unsigned arrival = (timestampFrequency*timeNow.tv_sec);
+    unsigned arrival = (timestampFrequency*timeNow.tv_sec);// timestampFrequency在解析SDP协议时，被设置为90KHz
+	// 计算RTP包的理论到达时间
     arrival += (unsigned)
       ((2.0*timestampFrequency*timeNow.tv_usec + 1000000.0)/2000000);
             // note: rounding
-    int transit = arrival - rtpTimestamp;
+    int transit = arrival - rtpTimestamp;// 理论和实际的时间差值
     if (fLastTransit == (~0)) fLastTransit = transit; // hack for first time
     int d = transit - fLastTransit;
     fLastTransit = transit;
-    if (d < 0) d = -d;
-    fJitter += (1.0/16.0) * ((double)d - fJitter);
+    if (d < 0) d = -d;// 取正数
+    fJitter += (1.0/16.0) * ((double)d - fJitter);// 计算出抖动值，除以16是？？？
   }
 
   // Return the 'presentation time' that corresponds to "rtpTimestamp":
@@ -326,7 +335,7 @@ void RTPReceptionStats
     fSyncTime = timeNow;
   }
 
-  int timestampDiff = rtpTimestamp - fSyncTimestamp;
+  int timestampDiff = rtpTimestamp - fSyncTimestamp;// RTP头部时间戳和上次的RTP头部时间戳的差值
       // Note: This works even if the timestamp wraps around
       // (as long as "int" is 32 bits)
 
@@ -345,6 +354,8 @@ void RTPReceptionStats
       ++seconds;
     }
   } else {
+    // 如果当前RTP包接收出现了乱序，包的序列号小于前一次rtp包的序列号
+    // 并且它们的时间戳不同，就会有这种负数的情况。
     timeDiff = -timeDiff;
     seconds = fSyncTime.tv_sec - (unsigned)(timeDiff);
     uSeconds = fSyncTime.tv_usec
@@ -360,9 +371,9 @@ void RTPReceptionStats
 
   // Save these as the new synchronization timestamp & time:
   fSyncTimestamp = rtpTimestamp;
-  fSyncTime = resultPresentationTime;
+  fSyncTime = resultPresentationTime;// 更新上一次的PTS
 
-  fPreviousPacketRTPTimestamp = rtpTimestamp;
+  fPreviousPacketRTPTimestamp = rtpTimestamp;// 更新上一次时间戳的时间
 }
 
 void RTPReceptionStats::noteIncomingSR(u_int32_t ntpTimestampMSW,

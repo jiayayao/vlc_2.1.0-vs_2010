@@ -50,7 +50,7 @@ public:
       // Note: This is *our* SSRC, not the SSRC in incoming RTP packets.
      // later need a means of changing the SSRC if there's a collision #####
 
-  unsigned timestampFrequency() const {return fTimestampFrequency;}
+  unsigned timestampFrequency() const {return fTimestampFrequency;}// 解析SDP协议时，被设置为90KHz
 
   RTPReceptionStatsDB& receptionStatsDB() const {
     return *fReceptionStatsDB;

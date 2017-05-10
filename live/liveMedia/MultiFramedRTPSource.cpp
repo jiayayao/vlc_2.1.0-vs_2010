@@ -318,7 +318,7 @@ void MultiFramedRTPSource::networkReadHandler1() {
 	// 根据数据包的一些信息，进行一些计算和记录
     receptionStatsDB()
       .noteIncomingPacket(rtpSSRC, rtpSeqNo, rtpTimestamp,
-			  timestampFrequency(),
+			  timestampFrequency(),// 解析SDP协议时，被设置为90KHz
 			  usableInJitterCalculation, presentationTime,
 			  hasBeenSyncedUsingRTCP, bPacket->dataSize());
 

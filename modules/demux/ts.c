@@ -988,7 +988,7 @@ static int Demux( demux_t *p_demux )
             }
             else if( !p_sys->b_udp_out )
             {
-				// 是否已经获取了一整帧的数据
+				// 返回值为是否已经获取了一整帧的数据
                 b_frame = GatherData( p_demux, p_pid, p_pkt );
             }
             else
@@ -1928,6 +1928,10 @@ static mtime_t GetPCR( block_t *p_pkt )
         ( p[4] >= 7 ) )
     {
         /* PCR is 33 bits */
+		// 0~3为TS header
+		// 4为adaption field length
+		// 5为...
+		// 6为PCR，总共占42位，但是这里取的是第一部分
         i_pcr = ( (mtime_t)p[6] << 25 ) |
                 ( (mtime_t)p[7] << 17 ) |
                 ( (mtime_t)p[8] << 9 ) |
@@ -2164,6 +2168,8 @@ static void PCRHandle( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
     if( p_sys->i_pmt_es <= 0 )
         return;
 
+	// 每个包都会获取，但不一定是每个包都有pcr
+	// 如果获取的pcr是错的，则return
     mtime_t i_pcr = GetPCR( p_bk );
     if( i_pcr < 0 )
         return;
@@ -2288,6 +2294,7 @@ static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
         }
     }
 
+	// 校正PCR
     PCRHandle( p_demux, pid, p_bk );
 
     if( i_skip >= 188 || pid->es->id == NULL || p_demux->p_sys->b_udp_out )
