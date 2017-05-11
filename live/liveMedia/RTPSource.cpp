@@ -376,6 +376,7 @@ void RTPReceptionStats
   fPreviousPacketRTPTimestamp = rtpTimestamp;// 更新上一次时间戳的时间
 }
 
+// 当接收到新的SR（Sender Report）的时候会调用此函数
 void RTPReceptionStats::noteIncomingSR(u_int32_t ntpTimestampMSW,
 				       u_int32_t ntpTimestampLSW,
 				       u_int32_t rtpTimestamp) {
