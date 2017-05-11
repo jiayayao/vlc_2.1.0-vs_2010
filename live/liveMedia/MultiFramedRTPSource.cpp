@@ -136,15 +136,16 @@ void MultiFramedRTPSource::doGetNextFrame1() {
 
     fNeedDelivery = False;
 
+	// 如果当前packet没有被使用过
     if (nextPacket->useCount() == 0) {
       // Before using the packet, check whether it has a special header
       // that needs to be processed:
       unsigned specialHeaderSize;
       if (!processSpecialHeader(nextPacket, specialHeaderSize)) {
-	// Something's wrong with the header; reject the packet:
-	fReorderingBuffer->releaseUsedPacket(nextPacket);
-	fNeedDelivery = True;
-	break;
+        // Something's wrong with the header; reject the packet:
+        fReorderingBuffer->releaseUsedPacket(nextPacket);
+        fNeedDelivery = True;
+        break;
       }
       nextPacket->skip(specialHeaderSize);
     }
@@ -153,10 +154,10 @@ void MultiFramedRTPSource::doGetNextFrame1() {
     // there was packet loss that would render this packet unusable:
     if (fCurrentPacketBeginsFrame) {
       if (packetLossPrecededThis || fPacketLossInFragmentedFrame) {
-	// We didn't get all of the previous frame.
-	// Forget any data that we used from it:
-	fTo = fSavedTo; fMaxSize = fSavedMaxSize;
-	fFrameSize = 0;
+        // We didn't get all of the previous frame.
+        // Forget any data that we used from it:
+        fTo = fSavedTo; fMaxSize = fSavedMaxSize;
+        fFrameSize = 0;
       }
       fPacketLossInFragmentedFrame = False;
     } else if (packetLossPrecededThis) {
@@ -525,6 +526,7 @@ Boolean ReorderingPacketBuffer::storePacket(BufferedPacket* bPacket) {
 
   // Ignore this packet if its sequence number is less than the one
   // that we're looking for (in this case, it's been excessively delayed).
+  // 如果序号比我们预计的要小，则丢弃
   if (seqNumLT(rtpSeqNo, fNextExpectedSeqNo)) return False;
 
   if (fTailPacket == NULL) {

@@ -133,7 +133,7 @@ protected:
 private:
   BufferedPacket* fNextPacket; // used to link together packets
 
-  unsigned fUseCount;
+  unsigned fUseCount;// 标识被使用过的次数？？？
   unsigned short fRTPSeqNo;
   unsigned fRTPTimestamp;
   struct timeval fPresentationTime; // corresponding to "fRTPTimestamp"
