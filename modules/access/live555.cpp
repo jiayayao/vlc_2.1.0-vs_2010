@@ -158,7 +158,7 @@ vlc_module_end ()
 typedef struct
 {
     demux_t         *p_demux;
-    MediaSubsession *sub;
+    MediaSubsession *sub;// 本次的会话实例
 
     es_format_t     fmt;
     es_out_id_t     *p_es;

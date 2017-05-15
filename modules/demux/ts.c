@@ -2189,6 +2189,7 @@ static void PCRHandle( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
             }
 }
 
+// 解析TS包
 static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
 {
     const uint8_t *p = p_bk->p_buffer;// 第一个字节（8位）为同步字节，此处没有获取
@@ -2350,6 +2351,10 @@ static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
         {
             if( p_bk->i_buffer > 6 )
             {
+				// 一个PES包含一帧图像，此时获取PES包的长度
+				// 当收集到的数据大于等于i_data_size时，将接收到的一整帧图像放入block中
+				// 等待解码线程解码
+				// PES包头为24位（3个字节），流ID为8位（1个字节），故PES包长度从第5个字节开始
                 pid->es->i_data_size = GetWBE( &p_bk->p_buffer[4] );
                 if( pid->es->i_data_size > 0 )
                 {
@@ -2387,7 +2392,7 @@ static bool GatherData( demux_t *p_demux, ts_pid_t *pid, block_t *p_bk )
             if( pid->es->i_data_size > 0 &&
                 pid->es->i_data_gathered >= pid->es->i_data_size )
             {
-				// 认为此时已经获取了一帧数据，那么push到block的队列中等待解码线程解码
+				// 认为此时已经获取了一整帧数据，那么push到block的队列中等待解码线程解码
                 ParseData( p_demux, pid );
                 i_ret = true;
             }
