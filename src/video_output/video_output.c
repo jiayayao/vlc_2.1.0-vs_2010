@@ -1054,7 +1054,7 @@ static int ThreadDisplayRenderPicture(vout_thread_t *vout, bool is_forced)
     vout_display_Display(vd,
                          sys->display.filtered ? sys->display.filtered
                                                 : direct,
-                         subpic);
+                         subpic);// 真正的显示，调用D3D的Display接口
     sys->display.filtered = NULL;
 
     vout_statistic_AddDisplayed(&vout->p->statistic, 1);

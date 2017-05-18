@@ -125,7 +125,7 @@ void BasicTaskScheduler::SingleStep(unsigned maxDelayTime) {
       fLastHandledSocketNum = sock;
           // Note: we set "fLastHandledSocketNum" before calling the handler,
           // in case the handler calls "doEventLoop()" reentrantly.
-      (*handler->handlerProc)(handler->clientData, resultConditionSet);
+      (*handler->handlerProc)(handler->clientData, resultConditionSet);// 接收RTCP数据
       break;
     }
   }
@@ -143,7 +143,7 @@ void BasicTaskScheduler::SingleStep(unsigned maxDelayTime) {
 	fLastHandledSocketNum = sock;
 	    // Note: we set "fLastHandledSocketNum" before calling the handler,
             // in case the handler calls "doEventLoop()" reentrantly.
-	(*handler->handlerProc)(handler->clientData, resultConditionSet);
+	(*handler->handlerProc)(handler->clientData, resultConditionSet);// 接收RTP数据
 	break;
       }
     }

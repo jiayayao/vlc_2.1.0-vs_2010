@@ -1970,6 +1970,7 @@ static void StreamRead( void *p_private, unsigned int i_size,
             if( i_pts != tk->i_pts )
                 p_block->i_pts = VLC_TS_0 + i_pts;
             /*FIXME: for h264 you should check that packetization-mode=1 in sdp-file */
+			// 调试发现h264的pts和dts设置为一样的了
             p_block->i_dts = ( tk->fmt.i_codec == VLC_CODEC_MPGV ) ? VLC_TS_INVALID : (VLC_TS_0 + i_pts);
         }
 
