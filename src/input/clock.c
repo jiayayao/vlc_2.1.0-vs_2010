@@ -261,7 +261,7 @@ void input_clock_Update( input_clock_t *cl, vlc_object_t *p_log,
         /* */
         b_reset_reference= true;
     }
-    else if( cl->last.i_stream > VLC_TS_INVALID &&
+    else if( cl->last.i_stream > VLC_TS_INVALID &&// 如果时间戳差距太大，则置位b_reset_reference，之后会重置本地时钟
              ( (cl->last.i_stream - i_ck_stream) > CR_MAX_GAP ||
                (cl->last.i_stream - i_ck_stream) < -CR_MAX_GAP ) )
     {
@@ -457,7 +457,7 @@ int input_clock_ConvertTS( input_clock_t *cl,
     /* Check ts validity */
     if( i_ts_bound != INT64_MAX &&
         *pi_ts0 > VLC_TS_INVALID && *pi_ts0 >= mdate() + i_ts_delay + i_ts_buffering + i_ts_bound )
-        return VLC_EGENERIC;
+			return VLC_EGENERIC;
 
     return VLC_SUCCESS;
 }
@@ -608,7 +608,7 @@ static mtime_t ClockStreamToSystem( input_clock_t *cl, mtime_t i_stream )
         return VLC_TS_INVALID;
 
     return ( i_stream - cl->ref.i_stream ) * cl->i_rate / INPUT_RATE_DEFAULT +
-           cl->ref.i_system;
+           cl->ref.i_system;// 上一次的system pts加上两次stream pts之差
 }
 
 /*****************************************************************************
@@ -618,7 +618,7 @@ static mtime_t ClockStreamToSystem( input_clock_t *cl, mtime_t i_stream )
  *****************************************************************************/
 static mtime_t ClockSystemToStream( input_clock_t *cl, mtime_t i_system )
 {
-    assert( cl->b_has_reference );
+    assert( cl->b_has_reference );// 必须要有参考的本地时钟，如果没有，则assert
     return ( i_system - cl->ref.i_system ) * INPUT_RATE_DEFAULT / cl->i_rate +
             cl->ref.i_stream;
 }

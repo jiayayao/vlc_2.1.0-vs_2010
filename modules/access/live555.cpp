@@ -212,7 +212,7 @@ struct demux_sys_t
     bool             b_real;
 
     /* */
-    int64_t          i_pcr; /* The clock */
+    int64_t          i_pcr; /* The clock */// 数据接收部分的时钟，由StreamRead更新
     double           f_npt;
     double           f_npt_length;
     double           f_npt_start;
@@ -1275,7 +1275,7 @@ static int Demux( demux_t *p_demux )
         }
 #endif
     }
-    if( p_sys->i_pcr > 0 )
+    if( p_sys->i_pcr > 0 )// p_sys->i_pcr由函数StreamRead更新
     {
         if( b_send_pcr )
             es_out_Control( p_demux->out, ES_OUT_SET_PCR, 1 + p_sys->i_pcr );

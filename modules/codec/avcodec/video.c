@@ -59,7 +59,7 @@ struct decoder_sys_t
 
     /* for frame skipping algo */
     bool b_hurry_up;
-    enum AVDiscard i_skip_frame;
+    enum AVDiscard i_skip_frame;// 丢帧策略
     enum AVDiscard i_skip_idct;
 
     /* how many decoded frames are late */
@@ -488,8 +488,8 @@ picture_t *DecodeVideo( decoder_t *p_dec, block_t **pp_block )
         p_sys->i_late_frames = 0;
     }
 
-    if( !p_dec->b_pace_control && (p_sys->i_late_frames > 0) &&
-        (mdate() - p_sys->i_late_frames_start > INT64_C(5000000)) )
+    if( !p_dec->b_pace_control && (p_sys->i_late_frames > 0) &&// 丢帧的个数大于0
+        (mdate() - p_sys->i_late_frames_start > INT64_C(5000000)) )// 当前时间减去丢帧的起始时间大于5s，则丢弃
     {
         if( p_sys->i_pts > VLC_TS_INVALID )
         {
@@ -508,7 +508,7 @@ picture_t *DecodeVideo( decoder_t *p_dec, block_t **pp_block )
         (p_sys->i_late_frames > 4) )
     {
         b_drawpicture = 0;
-        if( p_sys->i_late_frames < 12 )
+        if( p_sys->i_late_frames < 12 )// 如果统计的过期帧数大于4并且小于12，则设置解码器的丢帧策略
         {
             p_context->skip_frame =
                     (p_sys->i_skip_frame <= AVDISCARD_NONREF) ?
@@ -642,14 +642,14 @@ picture_t *DecodeVideo( decoder_t *p_dec, block_t **pp_block )
         /* Compute the PTS */
         mtime_t i_pts =
                     p_sys->p_ff_pic->pkt_pts;
-        if (i_pts <= VLC_TS_INVALID)
+        if (i_pts <= VLC_TS_INVALID)// 如果解码完后包内的pts无效，则赋值为包内的dts
             i_pts = p_sys->p_ff_pic->pkt_dts;
 
-        if( i_pts <= VLC_TS_INVALID )
+        if( i_pts <= VLC_TS_INVALID )// 如果仍然无效，则设置为decoder的pts
             i_pts = p_sys->i_pts;
 
         /* Interpolate the next PTS */
-        if( i_pts > VLC_TS_INVALID )
+        if( i_pts > VLC_TS_INVALID )// 如果得到的pts有效，则更新为decoder的pts
             p_sys->i_pts = i_pts;
         if( p_sys->i_pts > VLC_TS_INVALID )
         {
@@ -667,7 +667,7 @@ picture_t *DecodeVideo( decoder_t *p_dec, block_t **pp_block )
                 int i_tick = p_context->ticks_per_frame;
                 if( i_tick <= 0 )
                     i_tick = 1;
-
+				// 更新pts
                 p_sys->i_pts += INT64_C(1000000) *
                     (2 + p_sys->p_ff_pic->repeat_pict) *
                     i_tick * p_context->time_base.num /
@@ -675,16 +675,16 @@ picture_t *DecodeVideo( decoder_t *p_dec, block_t **pp_block )
             }
         }
 
-        /* Update frame late count (except when doing preroll) */
+		/* Update frame late count (except when doing preroll) */
         mtime_t i_display_date = 0;
         if( !(p_block->i_flags & BLOCK_FLAG_PREROLL) )
             i_display_date = decoder_GetDisplayDate( p_dec, i_pts );
 
         if( i_display_date > 0 && i_display_date <= mdate() )
         {
-            p_sys->i_late_frames++;
+            p_sys->i_late_frames++;// 丢帧个数自加
             if( p_sys->i_late_frames == 1 )
-                p_sys->i_late_frames_start = mdate();
+                p_sys->i_late_frames_start = mdate();// 记录第一帧丢帧的时刻
         }
         else
         {

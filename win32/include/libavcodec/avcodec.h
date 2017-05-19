@@ -534,10 +534,11 @@ enum AVDiscard{
      * keyframes for intra-only or drop just some bidir frames). */
     AVDISCARD_NONE    =-16, ///< discard nothing
     AVDISCARD_DEFAULT =  0, ///< discard useless packets like 0 size packets in avi
+	// 丢弃所有非参考帧，参考帧给别人参考，是I和P，所以AVDISCARD_NONREF是丢弃B帧，但有时候也包括I或P
     AVDISCARD_NONREF  =  8, ///< discard all non reference
-    AVDISCARD_BIDIR   = 16, ///< discard all bidirectional frames
-    AVDISCARD_NONKEY  = 32, ///< discard all frames except keyframes
-    AVDISCARD_ALL     = 48, ///< discard all
+    AVDISCARD_BIDIR   = 16, ///< discard all bidirectional frames，丢弃所有B帧
+    AVDISCARD_NONKEY  = 32, ///< discard all frames except keyframes，丢弃所有非关键帧
+    AVDISCARD_ALL     = 48, ///< discard all，全部丢弃
 };
 
 enum AVColorPrimaries{
@@ -2863,7 +2864,7 @@ typedef struct AVCodecContext {
      * - encoding: unused
      * - decoding: Set by user.
      */
-    enum AVDiscard skip_frame;
+    enum AVDiscard skip_frame;// 解码时的丢帧策略
 
     /**
      * Header containing style information for text subtitles.
