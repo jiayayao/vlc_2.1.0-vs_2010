@@ -46,11 +46,24 @@ FFmpeg一共包含8个库：
 ▫ avcodec：编解码（最重要的库）。
 ▫ avformat：封装格式处理。
 ▫ avfilter：滤镜特效处理。
-▫ avdevice：各种设备的输入输出。
+▫ avdevice：各种设备的输入输出，硬件采集，加速，显示等。
 ▫ avutil：工具库（大部分库都需要这个库的支持）。
-▫ postproc：后加工。
+▫ postproc：后加工，音视频的后处理
 ▫ swresample：音频采样数据格式转换。
 ▫ swscale：视频像素数据格式转换。
+▫ ffplay: 一个简单的播放器，使用FFmpeg库解析和解码，通过SDL显示。
+▫ ffmpeg：提供一个工具，可用于格式转换和解码。
+
+获取视频信息 ffmpeg -i video.avi
+将视频分解成图片序列 ffmpeg -i video.mpg image%d.jpg
+视频格式转换 ffmpeg -i source_video.avi input -acodec aac -ab 128kb -vcodec mpeg4 -b 1200kb -mbd 2 -flags +4mv+trell -aic 2 -cmp 2 -subcmp 2 -s 320x180 -title X final_video.mp4
+源视频：source_video.avi
+音频编码：aac
+音频位率：128kb/s
+视频编码：mpeg4
+视频位率：1200kb/s
+视频尺寸：320X180
+生成视频：final_video.mp4
 
 FFmpeg解码函数简介
 ▫ av_register_all()：注册所有组件。
@@ -65,7 +78,6 @@ FFmpeg解码函数简介
 
 AVPacket经过Decode，解码为AVFrame
 AVFormatContex：视频封装格式的上下文
-一个流（
 AVFormatContext：封装格式上下文结构体，保存了视频文件封装格式相关信息；
 AVInputFormat：每种封装格式（例如FLV，MKV，MP4等）对应一个该结构体；
 AVStream：视频文件中每个流（比如视频流，音频流），对应一个该结构体；
