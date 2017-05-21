@@ -184,12 +184,14 @@ void MultiFramedRTPSource::doGetNextFrame1() {
       fReorderingBuffer->releaseUsedPacket(nextPacket);
     }
 
+	// 如果是H.264就是一个NALU接收完毕
+	// 一个NALU就是一帧，所以这里是一帧接收结束
     if (fCurrentPacketCompletesFrame) {
       // We have all the data that the client wants.
       if (fNumTruncatedBytes > 0) {
-	envir() << "MultiFramedRTPSource::doGetNextFrame1(): The total received frame size exceeds the client's buffer size ("
-		<< fSavedMaxSize << ").  "
-		<< fNumTruncatedBytes << " bytes of trailing data will be dropped!\n";
+		envir() << "MultiFramedRTPSource::doGetNextFrame1(): The total received frame size exceeds the client's buffer size ("
+			<< fSavedMaxSize << ").  "
+			<< fNumTruncatedBytes << " bytes of trailing data will be dropped!\n";
       }
       // Call our own 'after getting' function, so that the downstream object can consume the data:
       if (fReorderingBuffer->isEmpty()) {
@@ -197,11 +199,11 @@ void MultiFramedRTPSource::doGetNextFrame1() {
 	// executed again without having first returned to the event loop.  Call our 'after getting' function
 	// directly, because there's no risk of a long chain of recursion (and thus stack overflow):
 	// 会执行StreamRead，将接收到的包送至数据fifo，由解码线程解码
-	afterGetting(this);
+		afterGetting(this);
       } else {
 	// Special case: Call our 'after getting' function via the event loop.
-	nextTask() = envir().taskScheduler().scheduleDelayedTask(0,
-								 (TaskFunc*)FramedSource::afterGetting, this);
+		  nextTask() = envir().taskScheduler().scheduleDelayedTask(0,
+			  (TaskFunc*)FramedSource::afterGetting, this);
       }
     } else {
       // This packet contained fragmented data, and does not complete
@@ -454,7 +456,7 @@ void BufferedPacket::use(unsigned char* to, unsigned toSize,
 
   rtpSeqNo = fRTPSeqNo;
   rtpTimestamp = fRTPTimestamp;
-  presentationTime = fPresentationTime;
+  presentationTime = fPresentationTime;// 当使用这个包的时候，将这个包的pts赋值给FramedSource的pts
   hasBeenSyncedUsingRTCP = fHasBeenSyncedUsingRTCP;
   rtpMarkerBit = fRTPMarkerBit;
 

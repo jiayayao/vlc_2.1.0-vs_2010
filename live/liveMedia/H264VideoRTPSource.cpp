@@ -62,6 +62,17 @@ H264VideoRTPSource
 H264VideoRTPSource::~H264VideoRTPSource() {
 }
 
+// RTP封装H.264方法
+// NAL头中的后5位
+// 0     没有定义
+//	1-23  NAL单元  单个 NAL 单元包
+//	24    STAP-A   单一时间的组合包
+//	25    STAP-B   单一时间的组合包
+//	26    MTAP16   多个时间的组合包
+//	27    MTAP24   多个时间的组合包
+//	28    FU-A     分片的单元
+//	29    FU-B     分片的单元
+//	30-31 没有定义
 Boolean H264VideoRTPSource
 ::processSpecialHeader(BufferedPacket* packet,
                        unsigned& resultSpecialHeaderSize) {
@@ -101,7 +112,7 @@ Boolean H264VideoRTPSource
       if (packetSize < expectedHeaderSize) return False;
       fCurrentPacketBeginsFrame = False;
     }
-    fCurrentPacketCompletesFrame = (endBit != 0);
+    fCurrentPacketCompletesFrame = (endBit != 0);// 一个NALU包接收结束
     break;
   }
   default: {

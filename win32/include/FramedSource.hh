@@ -75,7 +75,7 @@ protected:
   unsigned fMaxSize; // in
   unsigned fFrameSize; // out
   unsigned fNumTruncatedBytes; // out
-  struct timeval fPresentationTime; // out
+  struct timeval fPresentationTime; // out，在使用新接收的rtp包时，更新为rtp包中的值
   unsigned fDurationInMicroseconds; // out
 
 private:
