@@ -1,0 +1,82 @@
+视频的封装格式：MP4, RMVB, TS, FLV, AVI
+视频编码格式：H.264，MPEG-2, VC-1
+音频编码数据：AAC, MP3
+视频像素数据：YUV420P, RGB，送入显卡里显示的数据
+
+视频封装格式的作用是把视频和音频打包起来，合成一个文件来传，封装格式又称为容器。
+
+最新的视频编码格式是HEVC(H.265)
+
+H.264数据由大小不固定的NALU构成
+最常见的情况是，1个NALU存储一帧画面的压缩编码后的数据。
+
+红色I帧，蓝色P帧，绿色B帧。
+
+AAC是各个领域使用的音频编码格式
+
+YUV Player因为没有文件头信息，所以需要手动输入宽高
+
+ffmpeg.exe用于视频的转码
+ffmpeg -i input.avi -b:v 640k output.ts
+ffmpeg -i [输入文件路径] -b:v [输出视频码率] [输出文件路径]
+
+-h 帮助
+-i filename 输入文件
+-t duration 设置处理时间，格式为hh:mm:ss
+-ss position 设置起始时间，格式为hh:mm:ss
+-b:v bitrate 设置视频码率
+-b:a bitrate 设置音频码率
+-r fps 设置帧率
+-s wxh 设置帧大小（分辨率），格式为WxH
+-c:v codec 设置视频编码器
+-c:a codec 设置音频编码器
+-ar freq 设置音频采样率
+
+码率是编码后播放的视频一秒中播放的数据量，影响视频的质量
+帧率是每秒中播放的帧数
+
+ffplay.exe用于视频的播放
+ffplay input.avi
+ffplay [输入文件路径]
+
+解码的过程是解封装->解码->显示
+举例：MKV->H264->YUV
+
+FFmpeg一共包含8个库：
+▫ avcodec：编解码（最重要的库）。
+▫ avformat：封装格式处理。
+▫ avfilter：滤镜特效处理。
+▫ avdevice：各种设备的输入输出。
+▫ avutil：工具库（大部分库都需要这个库的支持）。
+▫ postproc：后加工。
+▫ swresample：音频采样数据格式转换。
+▫ swscale：视频像素数据格式转换。
+
+FFmpeg解码函数简介
+▫ av_register_all()：注册所有组件。
+▫ avformat_open_input()：打开输入视频文件。
+▫ avformat_find_stream_info()：获取视频文件信息。
+▫ avcodec_find_decoder()：查找解码器。
+▫ avcodec_open2()：打开解码器。
+▫ av_read_frame()：从输入文件读取一帧压缩数据。
+▫ avcodec_decode_video2()：解码一帧压缩数据。
+▫ avcodec_close()：关闭解码器。
+▫ avformat_close_input()：关闭输入视频文件。
+
+AVPacket经过Decode，解码为AVFrame
+AVFormatContex：视频封装格式的上下文
+一个流（
+AVFormatContext：封装格式上下文结构体，保存了视频文件封装格式相关信息；
+AVInputFormat：每种封装格式（例如FLV，MKV，MP4等）对应一个该结构体；
+AVStream：视频文件中每个流（比如视频流，音频流），对应一个该结构体；
+AVCodecContext：编码器上下文结构体，保存了视频（音频）编解码器相关信息；
+AVCodec：每种视频（音频）编解码器（例如H.264解码器）对应一个该结构体；
+AVPacket：存储一帧压缩编码数据；
+AVFrame:存储一帧解码后像素数据；
+
+
+
+
+
+
+
