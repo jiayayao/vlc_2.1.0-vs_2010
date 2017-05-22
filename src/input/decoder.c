@@ -785,6 +785,8 @@ static decoder_t * CreateDecoder( vlc_object_t *p_parent,
     p_owner->b_packetizer = b_packetizer;
 
     /* decoder fifo */
+	// 每个decoder有一个fifo
+	// 接收线程接收数据后放入fifo中，DecoderThread负责从fifo中取出数据解码
     p_owner->p_fifo = block_FifoNew();
     if( unlikely(p_owner->p_fifo == NULL) )
     {
@@ -906,6 +908,8 @@ static decoder_t * CreateDecoder( vlc_object_t *p_parent,
  *
  * \param p_dec the decoder
  */
+// 视频和音频解码入口都是DecoderThread
+// 从fifo中取出数据数据进入视频或者音频的分支解码
 static void *DecoderThread( void *p_data )
 {
     decoder_t *p_dec = (decoder_t *)p_data;
@@ -1074,6 +1078,7 @@ static inline void DecoderUpdatePreroll( int64_t *pi_preroll, const block_t *p )
         *pi_preroll = __MIN( *pi_preroll, p->i_pts );
 }
 
+// 将stream clock转换为system clock
 static void DecoderFixTs( decoder_t *p_dec, mtime_t *pi_ts0, mtime_t *pi_ts1,
                           mtime_t *pi_duration, int *pi_rate, mtime_t i_ts_bound )
 {
@@ -1510,7 +1515,7 @@ static void DecoderDecodeVideo( decoder_t *p_dec, block_t *p_block )
         if( p_dec->pf_get_cc &&
             ( !p_owner->p_packetizer || !p_owner->p_packetizer->pf_get_cc ) )
             DecoderGetCc( p_dec, p_dec );
-
+		// 将解码后的图像，放入图像fifo，等待渲染线程取出并渲染
         DecoderPlayVideo( p_dec, p_pic, &i_displayed, &i_lost );
     }
 

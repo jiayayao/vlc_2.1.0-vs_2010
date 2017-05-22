@@ -667,7 +667,7 @@ picture_t *DecodeVideo( decoder_t *p_dec, block_t **pp_block )
                 int i_tick = p_context->ticks_per_frame;
                 if( i_tick <= 0 )
                     i_tick = 1;
-				// 更新pts
+				// 更新p_sys的pts
                 p_sys->i_pts += INT64_C(1000000) *
                     (2 + p_sys->p_ff_pic->repeat_pict) *
                     i_tick * p_context->time_base.num /
@@ -732,7 +732,7 @@ picture_t *DecodeVideo( decoder_t *p_dec, block_t **pp_block )
         /* Send decoded frame to vout */
         if( i_pts > VLC_TS_INVALID)
         {
-            p_pic->date = i_pts;
+            p_pic->date = i_pts;// 将AVFrame中的pts时间赋值给picture_t的date
 
             if( p_sys->b_first_frame )
             {

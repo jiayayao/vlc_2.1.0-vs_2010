@@ -834,12 +834,12 @@ static int ThreadDisplayPreparePicture(vout_thread_t *vout, bool reuse, bool is_
             if (is_late_dropped && decoded && !decoded->b_force) {
                 const mtime_t predicted = mdate() + 0; /* TODO improve */
                 const mtime_t late = predicted - decoded->date;
-                if (late > VOUT_DISPLAY_LATE_THRESHOLD) {
+                if (late > VOUT_DISPLAY_LATE_THRESHOLD) {// 延迟大于20ms，则不予播放
                     msg_Warn(vout, "picture is too late to be displayed (missing %d ms)", (int)(late/1000));
                     picture_Release(decoded);
                     lost_count++;
                     continue;
-                } else if (late > 0) {
+                } else if (late > 0) {// 延迟大于0小于20ms，打印日志并播放
                     msg_Dbg(vout, "picture might be displayed late (missing %d ms)", (int)(late/1000));
                 }
             }

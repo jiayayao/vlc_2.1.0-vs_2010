@@ -379,6 +379,7 @@ int aout_DecPlay (audio_output_t *aout, block_t *block, int input_rate)
         goto drop; /* Pipeline is unrecoverably broken :-( */
 
     const mtime_t now = mdate (), advance = block->i_pts - now;
+	// 计算block的pts，太早或者太晚都会导致该block被丢弃
     if (advance < -AOUT_MAX_PTS_DELAY)
     {   /* Late buffer can be caused by bugs in the decoder, by scheduling
          * latency spikes (excessive load, SIGSTOP, etc.) or if buffering is
