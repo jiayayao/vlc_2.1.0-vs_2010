@@ -1808,6 +1808,7 @@ static void DecoderProcessVideo( decoder_t *p_dec, block_t *p_block, bool b_flus
         block_t *p_packetized_block;
         decoder_t *p_packetizer = p_owner->p_packetizer;
 
+		// 可能包含一些分隔符，所以这里需要打包
         while( (p_packetized_block =
                 p_packetizer->pf_packetize( p_packetizer, p_block ? &p_block : NULL )) )
         {
@@ -1819,11 +1820,12 @@ static void DecoderProcessVideo( decoder_t *p_dec, block_t *p_block, bool b_flus
             if( p_packetizer->pf_get_cc )
                 DecoderGetCc( p_dec, p_packetizer );
 
+			// 这里p_packetized_block可以理解为已经是打包好的图像链表的首地址
             while( p_packetized_block )
             {
                 block_t *p_next = p_packetized_block->p_next;
                 p_packetized_block->p_next = NULL;
-
+				// 解码当前帧，然后p_packetized_block指向链表的下一个继续解码
                 DecoderDecodeVideo( p_dec, p_packetized_block );
 
                 p_packetized_block = p_next;

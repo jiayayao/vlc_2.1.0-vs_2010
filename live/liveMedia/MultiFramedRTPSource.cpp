@@ -141,6 +141,9 @@ void MultiFramedRTPSource::doGetNextFrame1() {
       // Before using the packet, check whether it has a special header
       // that needs to be processed:
       unsigned specialHeaderSize;
+	  // 处理特殊的头部的虚函数，如果是H264，则进入H264VideoRTPSource::processSpecialHeader
+	  // 这里涉及到发送方在使用RTP封装H264数据时，会在RTP包中添加几个特殊字节，具体查看协议RFC3984
+	  // 这样接收方在接收到RTP包后，解析时，会处理这些特殊字节，这样来组成一个完整的NALU包
       if (!processSpecialHeader(nextPacket, specialHeaderSize)) {
         // Something's wrong with the header; reject the packet:
         fReorderingBuffer->releaseUsedPacket(nextPacket);
