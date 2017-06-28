@@ -1930,10 +1930,11 @@ static void StreamRead( void *p_private, unsigned int i_size,
     }
     else if( tk->fmt.i_codec == VLC_CODEC_H264 )
     {
-        if( (tk->p_buffer[0] & 0x1f) >= 24 )
+        if( (tk->p_buffer[0] & 0x1f) >= 24 )// 目前使用的nal_unit_type小于23
             msg_Warn( p_demux, "unsupported NAL type for H264" );
 
         /* Normal NAL type */
+		// RTP打包H264是不带起始码的
         p_block = block_Alloc( i_size + 4 );
         p_block->p_buffer[0] = 0x00;
         p_block->p_buffer[1] = 0x00;

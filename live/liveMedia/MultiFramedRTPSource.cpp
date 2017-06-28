@@ -211,6 +211,7 @@ void MultiFramedRTPSource::doGetNextFrame1() {
     } else {
       // This packet contained fragmented data, and does not complete
       // the data that the client wants.  Keep getting data:
+      // 当前帧还没有接收结束，继续接收
       fTo += frameSize; fMaxSize -= frameSize;
       fNeedDelivery = True;
     }
